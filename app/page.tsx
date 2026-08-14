@@ -57,7 +57,7 @@ export default function Home() {
     const revealObserver = !reduced && "IntersectionObserver" in window ? new IntersectionObserver((entries) => entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
       entry.target.classList.add("visible");
-      revealObserver.unobserve(entry.target);
+      revealObserver?.unobserve(entry.target);
     }), { threshold: .12 }) : null;
     reveals.forEach((node) => revealObserver ? revealObserver.observe(node) : node.classList.add("visible"));
 
