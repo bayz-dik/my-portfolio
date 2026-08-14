@@ -93,7 +93,7 @@ const id = {
   "skills.retail.items": "Operasional kasir dan POS|Penerimaan dan pengecekan barang|FIFO/FEFO dan pengelolaan stok|Penataan, perapihan tampilan, dan planogram",
   "skills.retail.source": "TERBENTUK DI · INDOMARET",
   "capability.label": "PUSAT KENDALI KEMAMPUAN",
-  "capability.system": "SISTEM_KEMAMPUAN_BAYU",
+  "capability.system": "SISTEM_KEMAMPUAN",
   "capability.online": "AKTIF",
   "capability.title": "Empat kemampuan. Satu tempat untuk memeriksa buktinya.",
   "capability.intro": "Pilih kemampuan untuk melihat dari mana kemampuan itu terbentuk dan pekerjaan nyata yang mendukungnya.",

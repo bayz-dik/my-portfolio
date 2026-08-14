@@ -58,7 +58,7 @@ test("renders a photo-free recruiter thriller with four proof chapters and one c
   assert.match(html, /class="header-contact"[^>]*href="#contact"/);
   assert.equal((html.match(/role="tab"/g) ?? []).length, 4);
   assert.match(html, /BUKTI KERJA(?:<!-- -->)? \/ 0(?:<!-- -->)?1/);
-  assert.match(html, /SISTEM_KEMAMPUAN_BAYU/);
+  assert.match(html, /SISTEM_KEMAMPUAN/);
   assert.match(html, /AKTIF<\/span>/);
   assert.match(html, /id="tab-technical"[^>]*tabindex="0"/);
   for (const id of ["operations", "admin", "retail"]) assert.match(html, new RegExp(`id="tab-${id}"[^>]*tabindex="-1"`));
