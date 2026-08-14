@@ -52,7 +52,7 @@ export default function Home() {
       ? new IntersectionObserver((entries) => entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
           entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
+          observer?.unobserve(entry.target);
         }), { threshold: 0.14 })
       : null;
     reveal.forEach((node) => observer ? observer.observe(node) : node.classList.add("visible"));
