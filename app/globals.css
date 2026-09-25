@@ -341,8 +341,8 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
   bottom:0;
   width:68%;
   opacity:.82;
-  -webkit-mask-image:linear-gradient(to bottom,#000 62%,rgba(0,0,0,.82) 78%,transparent 100%);
-  mask-image:linear-gradient(to bottom,#000 62%,rgba(0,0,0,.82) 78%,transparent 100%);
+  -webkit-mask-image:linear-gradient(to bottom,#000 52%,rgba(0,0,0,.96) 68%,rgba(0,0,0,.55) 84%,transparent 100%);
+  mask-image:linear-gradient(to bottom,#000 52%,rgba(0,0,0,.96) 68%,rgba(0,0,0,.55) 84%,transparent 100%);
 }
 .deity-bayu{
   right:2%;
@@ -360,7 +360,7 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
     height:72vw;
     min-height:460px;
   }
-  .deity-figure{left:-10%;bottom:0;width:82%;opacity:.78}
+  .deity-figure{bottom:0;opacity:.78}
   .deity-bayu{right:-6%;bottom:-1%;width:48%;opacity:.9}
 }
 
