@@ -295,7 +295,6 @@ export default function Home() {
 
         <section className="deity-interlude" data-image-transition aria-label={t("education.label")}>
           <div className="deity-interlude-stage">
-            <span className="deity-wordmark">BAYU ANDIKA</span>
             <img className="deity-figure" src="/art/hermes-bottom.png" alt="" loading="lazy" decoding="async" />
             <img className="deity-bayu" src="/art/bayu-poster.png" alt="" loading="lazy" decoding="async" />
           </div>
