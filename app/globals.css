@@ -147,23 +147,12 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
   filter:blur(24px);
   transform:scale(1.08);
 }
-.hero-art::after{
-  content:"";
-  position:absolute;
-  z-index:3;
-  inset:0;
-  pointer-events:none;
-  background:
-    linear-gradient(90deg,var(--blue) 0%,rgba(14,19,233,.72) 2%,rgba(14,19,233,0) 5%,rgba(14,19,233,0) 95%,rgba(14,19,233,.72) 98%,var(--blue) 100%),
-    linear-gradient(0deg,var(--blue) 0%,rgba(14,19,233,0) 3%,rgba(14,19,233,0) 100%);
-}
 .hero-art img{
   position:relative;z-index:2;width:min(54vw,690px);height:min(79vh,760px);object-fit:contain;
-  filter:none;
+  filter:url(#hero-art-key);
   mix-blend-mode:normal;
   opacity:1;
   transform:scale(1.04);
-  clip-path:inset(0 4px 4px 4px);
 
 }
 .deity-interlude-stage img{background:var(--blue)}
@@ -316,7 +305,7 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
 
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .hero h1 i,.hero-art img,.hero-art::before,.hero-art::after{animation:none}
+  .hero h1 i,.hero-art img,.hero-art::before{animation:none}
   .hero-art{transform:none}[data-reveal]{opacity:1;transform:none;transition:none}
 }
 .education-art-divider{
