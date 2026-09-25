@@ -140,7 +140,17 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
 .hero-art img{
   position:relative;z-index:2;width:min(54vw,690px);height:min(79vh,760px);object-fit:contain;
   filter:grayscale(1) contrast(1.08) brightness(1.18);
-  mix-blend-mode:screen;
+  mix-blend-mode:normal;
+  -webkit-mask-image:url("/art/hermes-top.png");
+  mask-image:url("/art/hermes-top.png");
+  -webkit-mask-mode:luminance;
+  mask-mode:luminance;
+  -webkit-mask-size:contain;
+  mask-size:contain;
+  -webkit-mask-position:center;
+  mask-position:center;
+  -webkit-mask-repeat:no-repeat;
+  mask-repeat:no-repeat;
   opacity:.96;
   transform:scale(1.04);
 }
