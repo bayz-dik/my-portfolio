@@ -336,6 +336,19 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
   line-height:0;
 }
 .deity-interlude-stage img{position:absolute;display:block;height:auto;max-width:none;object-fit:contain;object-position:center center;transform:none}
+.deity-wordmark{
+  position:absolute;
+  z-index:1;
+  left:5%;
+  bottom:29%;
+  color:rgba(255,255,255,.2);
+  font-size:clamp(4.2rem,12.5vw,10rem);
+  font-weight:300;
+  line-height:.8;
+  letter-spacing:-.045em;
+  white-space:nowrap;
+  text-transform:uppercase;
+}
 .deity-figure{
   left:0;
   bottom:0;
@@ -364,6 +377,7 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
     min-height:760px;
   }
   .deity-figure{left:0;bottom:190px;width:100%;opacity:.9}
+  .deity-wordmark{left:5%;bottom:29%;font-size:15vw;letter-spacing:-.055em}
   .deity-bayu{right:6%;bottom:8%;width:30%;opacity:.92;mix-blend-mode:normal;filter:saturate(.92) contrast(.98)}
 }
 
