@@ -153,9 +153,9 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
   z-index:3;
   inset:0;
   pointer-events:none;
-  background:var(--blue);
-  mix-blend-mode:color;
-  opacity:1;
+  background:
+    linear-gradient(90deg,var(--blue) 0%,rgba(14,19,233,.72) 2%,rgba(14,19,233,0) 5%,rgba(14,19,233,0) 95%,rgba(14,19,233,.72) 98%,var(--blue) 100%),
+    linear-gradient(0deg,var(--blue) 0%,rgba(14,19,233,0) 3%,rgba(14,19,233,0) 100%);
 }
 .hero-art img{
   position:relative;z-index:2;width:min(54vw,690px);height:min(79vh,760px);object-fit:contain;
