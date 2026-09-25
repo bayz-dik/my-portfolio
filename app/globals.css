@@ -361,7 +361,7 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
 }
 .deity-bayu{
   right:6%;
-  bottom:-24%;
+  bottom:-12%;
   width:32%;
   opacity:.96;
   z-index:4;
@@ -381,7 +381,7 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
   }
   .deity-figure{left:0;bottom:0;width:100%;opacity:.9}
   .deity-wordmark{left:6%;bottom:14%;font-size:21vw;letter-spacing:-.025em}
-  .deity-bayu{right:5%;bottom:-24%;width:32%;opacity:.96;mix-blend-mode:normal;filter:saturate(.92) contrast(.98);clip-path:inset(7% 8% 7% 8% round 3%)}
+  .deity-bayu{right:5%;bottom:-12%;width:32%;opacity:.96;mix-blend-mode:normal;filter:saturate(.92) contrast(.98);clip-path:inset(7% 8% 7% 8% round 3%)}
 }
 
 @media(prefers-reduced-motion:reduce){
