@@ -163,6 +163,7 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
   mix-blend-mode:normal;
   opacity:1;
   transform:scale(1.04);
+  clip-path:inset(0 4px 4px 4px);
 
 }
 .deity-interlude-stage img{background:var(--blue)}
