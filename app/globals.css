@@ -295,9 +295,8 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
 .deity-interlude{
   position:relative;
   overflow:hidden;
-  color:#fff;
-  background:var(--blue);
-  border-top:1px solid rgba(255,255,255,.18);
+  color:var(--ink);
+  background:var(--paper);
 }
 .deity-interlude-caption{
   position:relative;
@@ -307,9 +306,10 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
   align-items:center;
   min-height:58px;
   padding:14px 28px;
-  color:rgba(255,255,255,.82);
-  background:var(--blue);
-  border-bottom:1px solid rgba(255,255,255,.24);
+  color:var(--ink);
+  background:var(--paper);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
   font-size:.62rem;
   font-weight:800;
   letter-spacing:.12em;
@@ -318,26 +318,17 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
 .deity-interlude-stage{
   position:relative;
   width:100%;
-  height:min(82svh,900px);
-  min-height:520px;
-  display:grid;
-  place-items:center;
   overflow:hidden;
   background:var(--blue);
-}
-.deity-interlude-stage::after{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(to bottom,transparent 58%,rgba(23,23,255,.16));
-  pointer-events:none;
-  content:"";
+  line-height:0;
 }
 .deity-interlude-stage img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center center;
   display:block;
+  width:100%;
+  height:auto;
+  max-width:none;
+  object-fit:contain;
+  object-position:center center;
   transform:none;
   opacity:1;
 }
@@ -348,14 +339,13 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
     padding:12px 20px;
   }
   .deity-interlude-stage{
-    height:min(72svh,720px);
-    min-height:430px;
+    height:auto;
+    min-height:0;
   }
   .deity-interlude-stage img{
     width:100%;
-    height:100%;
-    object-fit:cover;
-    object-position:center center;
+    height:auto;
+    object-fit:contain;
   }
 }
 
