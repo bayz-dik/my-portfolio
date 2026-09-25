@@ -309,7 +309,10 @@ export default function Home() {
             <div className="contact-card" data-reveal>
               <div className="contact-card-top"><span>{t("verdict.action")}</span><span>Jakarta, Indonesia</span></div>
               <div className="contact-action-row">
-                <a className="small-button small-button-dark" href={LINKS.email}>{t("contact.emailAction")}</a>
+                <div className="contact-actions">
+                  <a className="small-button small-button-dark" href={LINKS.email}>{t("contact.emailAction")}</a>
+                  <a className="small-button small-button-dark contact-cv-button" href="/Bayu-Andika-CV.pdf" download>{t("common.downloadCv")}</a>
+                </div>
                 <img className="contact-bayu-card" src="/art/bayu-poster.png" alt="" loading="lazy" decoding="async" />
               </div>
               <PreferenceBar language={language} chooseLanguage={chooseLanguage} t={t} />
