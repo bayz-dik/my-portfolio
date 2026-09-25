@@ -96,11 +96,11 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
 .hero{position:relative;min-height:100svh;overflow:hidden;color:#fff;background:var(--blue)}
 
 
-.hero-orbits span{position:absolute;z-index:1;border:1px solid rgba(255,255,255,.22);border-radius:50%;pointer-events:none}
-.hero-orbits span:nth-child(1){width:25vw;height:25vw;right:9%;top:9%}
-.hero-orbits span:nth-child(2){width:40vw;height:22vw;right:-3%;top:20%;transform:rotate(23deg)}
-.hero-orbits span:nth-child(3){width:32vw;height:47vw;right:14%;top:11%;transform:rotate(-18deg)}
-.hero-orbits span:nth-child(4){width:15vw;height:15vw;right:33%;top:37%}
+
+
+
+
+
 .hero-inner{
   position:relative;z-index:3;width:min(calc(100% - 56px),1240px);min-height:100svh;margin-inline:auto;
   display:flex;flex-direction:column;padding:92px 0 34px
