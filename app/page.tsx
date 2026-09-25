@@ -1,11 +1,10 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { CONTENT, LINKS } from "./content.js";
 import { readPreferences, writePreference } from "./preferences.js";
 
 type Language = "id" | "en";
-type Theme = "light" | "dark";
 type WorkKey = "indomaret" | "bmc" | "mitra" | "restu";
 
 const jobs: ReadonlyArray<{
@@ -30,54 +29,51 @@ const featureAssets = [
   "https://web-assets.nousresearch.com/nousnet-web/img/desktop/feature-sandbox.095069d7fe5b76a7.webp",
 ];
 
-const aphroditeSrc = "https://upload.wikimedia.org/wikipedia/commons/e/ea/Venus_Genetrix.jpg";
+const hermesHero = "https://web-assets.nousresearch.com/nousnet-web/img/desktop/hero-art.7d419eeb314799e0.webp";
 
 export default function Home() {
   const [language, setLanguage] = useState<Language>("id");
-  const [theme, setTheme] = useState<Theme>("light");
   const [openFaq, setOpenFaq] = useState<WorkKey | "">("indomaret");
   const [menuOpen, setMenuOpen] = useState(false);
   const [announcement, setAnnouncement] = useState("");
 
   const copy = CONTENT[language] as Record<string, string>;
   const t = useCallback((key: string) => copy[key] ?? (CONTENT.id as Record<string, string>)[key], [copy]);
+  const heroLines = useMemo(() => t("hero.lines").split("|"), [t]);
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
-      const saved = readPreferences(localStorage) as { language: Language; theme: Theme };
+      const saved = readPreferences(localStorage) as { language: Language };
       setLanguage(saved.language);
-      setTheme(saved.theme);
     }, 0);
     return () => window.clearTimeout(timer);
   }, []);
 
   useEffect(() => {
     document.documentElement.lang = language;
-    document.documentElement.dataset.theme = theme;
+    document.documentElement.dataset.theme = "light";
     document.title = t("meta.title");
     document.querySelector('meta[name="description"]')?.setAttribute("content", t("meta.description"));
 
     const root = document.documentElement;
     const header = document.querySelector<HTMLElement>("[data-site-header]");
     const hero = document.querySelector<HTMLElement>(".hero");
-    const revealNodes = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
     const featureNodes = Array.from(document.querySelectorAll<HTMLElement>("[data-feature-motion]"));
+    const revealNodes = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
     const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    const revealObserver = !reduced && "IntersectionObserver" in window
-      ? new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            entry.target.classList.add("is-visible");
-            revealObserver?.unobserve(entry.target);
-          });
-        }, { threshold: 0.08 })
+    const observer = !reduced && "IntersectionObserver" in window
+      ? new IntersectionObserver((entries) => entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer?.unobserve(entry.target);
+        }), { threshold: 0.08 })
       : null;
 
-    revealNodes.forEach((node) => revealObserver ? revealObserver.observe(node) : node.classList.add("is-visible"));
+    revealNodes.forEach((node) => observer ? observer.observe(node) : node.classList.add("is-visible"));
 
     let frame = 0;
-    const onScroll = () => {
+    const sync = () => {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
         const maxScroll = Math.max(1, root.scrollHeight - innerHeight);
@@ -88,35 +84,27 @@ export default function Home() {
 
         featureNodes.forEach((node) => {
           const rect = node.getBoundingClientRect();
-          const center = innerHeight * 0.5;
-          const distance = (rect.top + rect.height * 0.5) - center;
-          const drift = Math.max(-1, Math.min(1, distance / Math.max(1, innerHeight)));
-          node.style.setProperty("--feature-shift", String(drift));
+          const delta = ((rect.top + rect.height / 2) - innerHeight / 2) / Math.max(1, innerHeight);
+          node.style.setProperty("--feature-shift", String(Math.max(-1, Math.min(1, delta))));
         });
       });
     };
 
-    onScroll();
-    addEventListener("scroll", onScroll, { passive: true });
-    addEventListener("resize", onScroll);
+    sync();
+    addEventListener("scroll", sync, { passive: true });
+    addEventListener("resize", sync);
     return () => {
       cancelAnimationFrame(frame);
-      removeEventListener("scroll", onScroll);
-      removeEventListener("resize", onScroll);
-      revealObserver?.disconnect();
+      removeEventListener("scroll", sync);
+      removeEventListener("resize", sync);
+      observer?.disconnect();
     };
-  }, [language, theme, t]);
+  }, [language, t]);
 
   const chooseLanguage = (next: Language) => {
     setLanguage(next);
     writePreference(localStorage, "language", next);
     setAnnouncement((CONTENT[next] as Record<string, string>)["announce." + next]);
-  };
-
-  const chooseTheme = (next: Theme) => {
-    setTheme(next);
-    writePreference(localStorage, "theme", next);
-    setAnnouncement(t("announce." + next));
   };
 
   const closeMenu = () => setMenuOpen(false);
@@ -126,60 +114,51 @@ export default function Home() {
       <a className="skip" href="#main">{t("a11y.skip")}</a>
 
       <header className="site-header" data-site-header>
-        <a className="brand" href="#top" aria-label={t("a11y.backTop")}>
-          <span>BAYU ANDIKA</span>
-        </a>
-        <div className="header-right">
-          <a className="header-cta" href="#contact">{t("verdict.action")} <span>→</span></a>
-          <button
-            className={"menu-button " + (menuOpen ? "is-open" : "")}
-            type="button"
-            aria-expanded={menuOpen}
-            aria-controls="social-menu"
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-            onClick={() => setMenuOpen((value) => !value)}
-          >
-            <span></span><span></span><span></span>
-          </button>
-        </div>
+        <a className="brand" href="#top" aria-label={t("a11y.backTop")}>BAYU ANDIKA</a>
+        <button
+          className={"menu-button " + (menuOpen ? "is-open" : "")}
+          type="button"
+          aria-expanded={menuOpen}
+          aria-controls="social-menu"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          onClick={() => setMenuOpen((value) => !value)}
+        >
+          <span></span><span></span><span></span>
+        </button>
         <div className="page-progress" aria-hidden="true"><i /></div>
       </header>
 
       <aside id="social-menu" className={"social-menu " + (menuOpen ? "is-open" : "")} aria-hidden={!menuOpen}>
         <div className="social-menu-inner">
-          <div>
+          <div className="social-menu-heading">
             <p className="social-menu-kicker">{t("contact.label")}</p>
-            <p className="social-menu-note">{t("contact.description")}</p>
+            <p>{t("contact.description")}</p>
           </div>
-          <nav className="social-list" aria-label={t("contact.label")}>
-            <a href={LINKS.github} target="_blank" rel="noopener noreferrer" onClick={closeMenu}>GitHub <span>↗</span></a>
-            <a href={LINKS.instagram} target="_blank" rel="noopener noreferrer" onClick={closeMenu}>Instagram <span>↗</span></a>
-            <a href={LINKS.linkedin} target="_blank" rel="noopener noreferrer" onClick={closeMenu}>LinkedIn <span>↗</span></a>
-            <a href={LINKS.facebook} target="_blank" rel="noopener noreferrer" onClick={closeMenu}>Facebook <span>↗</span></a>
-            <a href={LINKS.email} onClick={closeMenu}>Email <span>→</span></a>
-            <a href={LINKS.phone} onClick={closeMenu}>Phone <span>→</span></a>
+          <nav className="social-icon-grid" aria-label={t("contact.label")}>
+            <SocialIcon icon="github" label={t("contact.githubLabel")} href={LINKS.github} onClick={closeMenu} />
+            <SocialIcon icon="instagram" label={t("contact.instagramLabel")} href={LINKS.instagram} onClick={closeMenu} />
+            <SocialIcon icon="linkedin" label={t("contact.linkedinLabel")} href={LINKS.linkedin} onClick={closeMenu} />
+            <SocialIcon icon="facebook" label={t("contact.facebookLabel")} href={LINKS.facebook} onClick={closeMenu} />
+            <SocialIcon icon="email" label={t("contact.emailLabel")} href={LINKS.email} onClick={closeMenu} />
+            <SocialIcon icon="phone" label={t("contact.phoneLabel")} href={LINKS.phone} onClick={closeMenu} />
           </nav>
-          <div className="social-menu-bottom">
-            <a href="#contact" onClick={closeMenu}>{t("verdict.action")} <span>→</span></a>
-            <button type="button" onClick={closeMenu}>Close</button>
-          </div>
         </div>
       </aside>
 
       <main id="main" tabIndex={-1}>
         <section id="top" className="hero" aria-labelledby="hero-title">
           <div className="hero-grid" aria-hidden="true"></div>
-          <div className="hero-rings" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div className="hero-orbits" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
           <div className="hero-inner">
             <div className="hero-navline">
               <span>{t("hero.role")}</span>
               <span>{t("hero.signal")}</span>
             </div>
+
             <div className="hero-main">
               <div className="hero-copy">
-                <p className="hero-kicker">{t("hero.role")}</p>
                 <h1 id="hero-title">
-                  {t("hero.lines").split("|").map((line, index) => (
+                  {heroLines.map((line, index) => (
                     <span key={line} className={index > 1 ? "hero-outline" : ""}><i>{line}</i></span>
                   ))}
                 </h1>
@@ -190,16 +169,23 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="hero-deity">
-                <img src={aphroditeSrc} alt="" loading="eager" />
-                <span className="deity-ring deity-ring-a"></span>
-                <span className="deity-ring deity-ring-b"></span>
-                <span className="deity-ring deity-ring-c"></span>
+              <div className="hero-art">
+                <div className="hero-art-radiance" aria-hidden="true"></div>
+                <img src={hermesHero} alt="" loading="eager" />
               </div>
             </div>
 
             <div className="hero-bottom">
-              <div className="hero-marquee"><span>{t("hero.signal")}</span><span>{t("hero.signal")}</span><span>{t("hero.signal")}</span></div>
+              <div className="hero-terminal">
+                <div className="terminal-tabs">
+                  {t("hero.scan").split("|").map((item, index) => <span key={item} className={index === 0 ? "active" : ""}>{item}</span>)}
+                </div>
+                <div className="terminal-window">
+                  <span className="terminal-prompt" aria-hidden="true">›</span>
+                  <p>{t("hero.signal")}</p>
+                  <code>{t("hero.description")}</code>
+                </div>
+              </div>
               <a className="scroll-prompt" href="#experience"><span>{t("hero.scrollPrompt")}</span><b>↓</b></a>
             </div>
           </div>
@@ -215,27 +201,6 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="platform-section" aria-label={t("experience.label")}>
-          <div className="section-shell platform-shell">
-            <div className="platform-heading" data-reveal>
-              <p className="eyebrow">{t("hero.role")}</p>
-              <h2>{t("experience.title")}</h2>
-            </div>
-            <div className="platform-grid">
-              {jobs.map((job) => (
-                <a key={job.key} className="platform-card" href={"#work-" + job.key} data-reveal>
-                  <div className="platform-image"><img src={job.image} alt="" loading="lazy" /></div>
-                  <div className="platform-meta">
-                    <span>{job.number}</span>
-                    <strong>{t("experience." + job.key + ".role")}</strong>
-                    <small>{job.company}</small>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <section className="feature-story" aria-labelledby="story-title">
           <div className="section-shell feature-heading" data-reveal>
             <p className="eyebrow">{t("capability.label")}</p>
@@ -247,7 +212,6 @@ export default function Home() {
               <div className="section-shell feature-inner">
                 <div className="feature-media">
                   <img src={featureAssets[index]} alt="" loading="lazy" />
-                  <div className="feature-deity"><img src={aphroditeSrc} alt="" loading="lazy" /></div>
                   <span className="feature-index">{job.number}</span>
                 </div>
                 <div className="feature-copy" data-reveal>
@@ -263,12 +227,9 @@ export default function Home() {
 
           <article className="feature-row feature-row-1" data-feature-motion>
             <div className="section-shell feature-inner">
-              <div className="feature-media">
-                <img src={featureAssets[4]} alt="" loading="lazy" />
-                <span className="feature-index">05</span>
-              </div>
+              <div className="feature-media"><img src={featureAssets[4]} alt="" loading="lazy" /><span className="feature-index">05</span></div>
               <div className="feature-copy" data-reveal>
-                <p className="eyebrow">{t("skills.technical.source")}</p>
+                <p className="eyebrow">{t("skills.label")}</p>
                 <h3>{t("skills.technical.title")}</h3>
                 <p>{t("skills.technical.items").split("|").join(" · ")}</p>
               </div>
@@ -277,10 +238,7 @@ export default function Home() {
 
           <article className="feature-row feature-row-2" data-feature-motion>
             <div className="section-shell feature-inner">
-              <div className="feature-media">
-                <img src={featureAssets[5]} alt="" loading="lazy" />
-                <span className="feature-index">06</span>
-              </div>
+              <div className="feature-media"><img src={featureAssets[5]} alt="" loading="lazy" /><span className="feature-index">06</span></div>
               <div className="feature-copy" data-reveal>
                 <p className="eyebrow">{t("education.label")}</p>
                 <h3>{t("education.title")}</h3>
@@ -301,7 +259,7 @@ export default function Home() {
                 const open = openFaq === job;
                 return (
                   <div className={"faq-item " + (open ? "is-open" : "")} key={job}>
-                    <button type="button" onClick={() => setOpenFaq(open ? "" : job)}>
+                    <button type="button" aria-expanded={open} onClick={() => setOpenFaq(open ? "" : job)}>
                       <span>{jobs.find((item) => item.key === job)?.number}</span>
                       <strong>{t("experience." + job + ".question")}</strong>
                       <b>{open ? "−" : "+"}</b>
@@ -314,35 +272,34 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="portal-section" id="education" aria-labelledby="portal-title">
-          <div className="section-shell portal-inner">
-            <div className="portal-art"><img src="https://web-assets.nousresearch.com/nousnet-web/img/desktop/portal-figure.1a7331fc19b39242.webp" alt="" loading="lazy" /></div>
-            <div className="portal-copy" data-reveal>
+        <section className="education-section" aria-labelledby="education-full-title">
+          <div className="section-shell education-inner">
+            <div data-reveal>
               <p className="eyebrow">{t("education.label")}</p>
-              <h2 id="portal-title">{t("education.title")}</h2>
+              <p className="education-period">{t("education.period")}</p>
+              <h2 id="education-full-title">{t("education.title")}</h2>
+            </div>
+            <div className="education-copy" data-reveal>
+              <h3>{t("education.institution")}</h3>
+              <p>{t("education.official")}</p>
+              <p className="program">{t("education.program")}</p>
               <p>{t("education.description")}</p>
-              <a className="portal-button" href="#contact">{t("verdict.action")} <span>→</span></a>
             </div>
           </div>
         </section>
 
         <section className="contact-section" id="contact" aria-labelledby="contact-title">
-          <div className="contact-orbit" aria-hidden="true"><img src={aphroditeSrc} alt="" loading="lazy" /></div>
-          <div className="section-shell contact-grid">
+          <div className="contact-grid section-shell">
             <div data-reveal>
               <p className="eyebrow">{t("contact.label")}</p>
               <h2 id="contact-title">{t("contact.title")}</h2>
               <p className="contact-description">{t("contact.description")}</p>
-              <a className="contact-main-button" href={LINKS.email}>{t("contact.emailAction")} <span>→</span></a>
             </div>
             <div className="contact-card" data-reveal>
               <div className="contact-card-top"><span>{t("verdict.action")}</span><span>© 2026</span></div>
               <a className="contact-location" href={LINKS.maps} target="_blank" rel="noopener noreferrer">{t("contact.locationLabel")}: Magelang, Indonesia</a>
-              <div className="contact-actions">
-                <a className="small-button small-button-dark" href={LINKS.email}>{t("contact.emailAction")}</a>
-                <a className="small-button small-button-light" href="/Bayu-Andika-CV.pdf" download>{t("common.downloadCv")}</a>
-              </div>
-              <PreferenceBar language={language} theme={theme} chooseLanguage={chooseLanguage} chooseTheme={chooseTheme} t={t} />
+              <a className="small-button small-button-dark" href={LINKS.email}>{t("contact.emailAction")} <span>→</span></a>
+              <PreferenceBar language={language} chooseLanguage={chooseLanguage} t={t} />
             </div>
           </div>
           <p className="sr-only" aria-live="polite">{announcement}</p>
@@ -364,19 +321,37 @@ function faqJobs(): WorkKey[] {
   return ["indomaret", "bmc", "mitra", "restu"];
 }
 
-function PreferenceBar({ language, theme, chooseLanguage, chooseTheme, t }: {
+function PreferenceBar({ language, chooseLanguage, t }: {
   language: Language;
-  theme: Theme;
   chooseLanguage: (next: Language) => void;
-  chooseTheme: (next: Theme) => void;
   t: (key: string) => string;
 }) {
   return (
     <div className="preference-bar">
-      <button type="button" className={"pref-button " + (theme === "light" ? "is-active" : "")} onClick={() => chooseTheme("light")} aria-pressed={theme === "light"}>{t("preferences.light")}</button>
-      <button type="button" className={"pref-button " + (theme === "dark" ? "is-active" : "")} onClick={() => chooseTheme("dark")} aria-pressed={theme === "dark"}>{t("preferences.dark")}</button>
       <button type="button" className={"pref-button " + (language === "id" ? "is-active" : "")} onClick={() => chooseLanguage("id")} aria-pressed={language === "id"}>ID</button>
-      <button type="button" className={"pref-button " + (language === "en" ? "is-active" : "")} onClick={() => chooseLanguage("en")} aria-pressed={language === "en"}>ENG</button>
+      <button type="button" className={"pref-button " + (language === "en" ? "is-active" : "")} onClick={() => chooseLanguage("en")} aria-pressed={language === "en"}>{t("preferences.eng")}</button>
     </div>
+  );
+}
+
+function SocialIcon({ icon, label, href, onClick }: {
+  icon: "email" | "phone" | "linkedin" | "github" | "instagram" | "facebook";
+  label: string;
+  href: string;
+  onClick: () => void;
+}) {
+  const external = href.startsWith("http");
+  const paths: Record<string, string> = {
+    email: "M4 6h16v12H4z M5 7l7 6 7-6",
+    phone: "M8 4l3 5-3 2c2 4 4 6 8 8l2-3 5 3-2 3C13 21 4 12 4 7Z",
+    linkedin: "M6 9H3v11h3V9ZM4.5 3A1.8 1.8 0 1 0 4.5 6.6 1.8 1.8 0 0 0 4.5 3ZM21 14c0-3.3-1.8-5-4.3-5-1.8 0-2.8 1-3.3 1.8V9h-3v11h3v-5.5c0-1.5.4-2.9 2.2-2.9 1.8 0 1.9 1.8 1.9 3V20H21Z",
+    github: "M12 2.5a9.5 9.5 0 0 0 0 19c.5 0 .7-.2 .7-.5v-2c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 0 1.6 1.1 1.6 1.1.9 1.6 2.4 1.1 2.9.8.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-4.7 0-1 .4-1.9 1-2.6.8-1.1.6-2.1.2-2.6 0 0 .8-.3 2.7 1a9.2 9.2 0 0 1 4.9 0c1.9-1.3 2.7-1 2.7-1 .4.5.6 1.5.2 2.6.7.7 1 1.6 1 2.6 0 3.7-2.3 4.5-4.6 4.7.4.3.7 1 .7 1.9v2c0 .3.2.5.7.5a9.5 9.5 0 0 0 0-19Z",
+    instagram: "M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4Zm5 5.2a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6Zm5-1.2h.01",
+    facebook: "M14 21v-7h2.5l.4-3H14V9.2c0-.9.3-1.4 1.6-1.4H17V4.4c-.3 0-1.2-.1-2.3-.1-2.5 0-4.2 1.5-4.2 4.3V11H8v3h2.5v7Z",
+  };
+  return (
+    <a className="social-icon-button" href={href} aria-label={label} title={label} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined} onClick={onClick}>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d={paths[icon]} /></svg>
+    </a>
   );
 }
