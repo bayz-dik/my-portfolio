@@ -130,12 +130,17 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
 .hero-button:hover{transform:translateY(-2px)}
 .hero-button-primary{color:var(--blue);background:#fff}.hero-button-light{color:#fff;border:1px solid rgba(255,255,255,.34)}
 
-.hero-art{position:relative;z-index:4;min-height:min(690px,72vh);display:grid;place-items:center;transform:translate3d(calc(var(--hero-shift)*1.8vw),calc(var(--hero-shift)*-1.2vh),0);transition:transform .12s linear}
+.hero-art{
+  position:relative;z-index:4;min-height:min(690px,72vh);display:grid;place-items:center;
+  isolation:isolate;
+  transform:translate3d(calc(var(--hero-shift)*1.8vw),calc(var(--hero-shift)*-1.2vh),0);
+  transition:transform .12s linear
+}
 
 .hero-art img{
   position:relative;z-index:2;width:min(54vw,690px);height:min(79vh,760px);object-fit:contain;
   filter:grayscale(1) contrast(1.08) brightness(1.18);
-  mix-blend-mode:lighten;
+  mix-blend-mode:screen;
   opacity:.96;
   transform:scale(1.04);
 }
