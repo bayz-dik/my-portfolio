@@ -331,3 +331,233 @@ footer strong { color:var(--ink); letter-spacing:.16em; }
   .proof-format li,.decision-summary li { opacity:1; transform:none; transition:none; }
   .js [data-reveal] { opacity:1; transform:none; transition:none; }
 }
+
+
+/* Hermes-inspired Greek art direction — Aphrodite edition.
+   Visual language follows the reference site's large cutout character, radial geometry,
+   asymmetric editorial composition and restrained electric-blue treatment.
+*/
+:root {
+  --hermes-blue: #2f45ff;
+  --hermes-blue-deep: #121a68;
+  --hermes-paper: #f7f5ef;
+  --hermes-grid: color-mix(in srgb, var(--hermes-blue) 22%, transparent);
+}
+html[data-theme="dark"] {
+  --hermes-paper: #11131f;
+  --hermes-grid: color-mix(in srgb, #8d98ff 18%, transparent);
+}
+.hero-stage {
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 78% 42%, color-mix(in srgb,var(--hermes-blue) 12%,transparent), transparent 32%),
+    var(--canvas);
+}
+.hero-stage::before {
+  opacity: .34;
+  background-image:
+    linear-gradient(var(--hermes-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hermes-grid) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+.hero-wrap { min-height: 100svh; }
+.hero-art-layer {
+  position:absolute;
+  z-index:0;
+  top:8%;
+  right:-3%;
+  width:min(51vw,650px);
+  height:82%;
+  pointer-events:none;
+  transform:translate3d(calc(var(--hero-progress) * 1.5vw),calc(var(--hero-progress) * -1.2vh),0);
+  transition:transform 120ms linear;
+}
+.hero-art-layer::before,
+.hero-art-layer::after {
+  position:absolute;
+  border-radius:50%;
+  content:"";
+}
+.hero-art-layer::before {
+  inset:9% 7%;
+  border:1px solid color-mix(in srgb,var(--hermes-blue) 30%,transparent);
+  transform:rotate(-16deg);
+}
+.hero-art-layer::after {
+  inset:18% -3%;
+  border:1px dashed color-mix(in srgb,var(--hermes-blue) 22%,transparent);
+  transform:rotate(18deg);
+}
+.hero-art-layer .aphrodite-art { width:100%; height:100%; }
+.aphrodite-art {
+  position:relative;
+  display:grid;
+  place-items:center;
+  color:var(--hermes-blue);
+}
+.aphrodite-art svg { width:100%; height:100%; overflow:visible; }
+.aphrodite-figure { transform-origin:50% 54%; animation:aphrodite-float 6.5s ease-in-out infinite; }
+.aphrodite-orbits { transform-origin:50% 50%; animation:aphrodite-orbit 22s linear infinite; }
+.aphrodite-rays path { stroke:currentColor; stroke-width:1; stroke-opacity:.22; }
+.aphrodite-shell { animation:aphrodite-pulse 4s ease-in-out infinite; }
+.aphrodite-glow { animation:aphrodite-glow 4s ease-in-out infinite; }
+@keyframes aphrodite-float {
+  0%,100% { transform:translateY(0) rotate(-.35deg); }
+  50% { transform:translateY(-13px) rotate(.35deg); }
+}
+@keyframes aphrodite-orbit {
+  to { transform:rotate(360deg); }
+}
+@keyframes aphrodite-pulse {
+  0%,100% { opacity:.72; transform:scale(.98); }
+  50% { opacity:1; transform:scale(1.02); }
+}
+@keyframes aphrodite-glow {
+  0%,100% { opacity:.4; }
+  50% { opacity:.82; }
+}
+.hero-topline,.hero-stage h1,.hero-bottom,.scroll-invite { position:relative; z-index:2; }
+.hero-stage h1 { max-width: 9ch; }
+.hero-stage h1 .outline-line i {
+  -webkit-text-stroke:1.4px var(--hermes-blue);
+  color:transparent;
+}
+.hero-bottom {
+  position:relative;
+  z-index:3;
+  width:min(72%,920px);
+}
+.hero-scan {
+  background:color-mix(in srgb,var(--canvas) 68%,transparent);
+  backdrop-filter:blur(8px);
+}
+.recruiter-scan {
+  position:relative;
+  overflow:hidden;
+}
+.recruiter-scan::after {
+  position:absolute;
+  right:-14vw;
+  bottom:-18vw;
+  width:44vw;
+  height:44vw;
+  border:1px solid color-mix(in srgb,var(--hermes-blue) 24%,transparent);
+  border-radius:50%;
+  content:"";
+}
+.kinetic-marquee {
+  background:var(--hermes-blue);
+  border-color:var(--hermes-blue);
+}
+.experience {
+  position:relative;
+  overflow:clip;
+}
+.experience-intro {
+  position:relative;
+  z-index:2;
+}
+.proof-chapter {
+  position:relative;
+  overflow:clip;
+}
+.chapter-shell { isolation:isolate; }
+.chapter-shell .aphrodite-art--chapter {
+  position:absolute;
+  z-index:0;
+  top:5%;
+  right:-7%;
+  width:min(42vw,520px);
+  height:88%;
+  opacity:.18;
+  pointer-events:none;
+  mix-blend-mode:multiply;
+}
+html[data-theme="dark"] .chapter-shell .aphrodite-art--chapter {
+  opacity:.14;
+  mix-blend-mode:screen;
+}
+.chapter-shell .chapter-question,
+.chapter-shell .proof-interface { position:relative; z-index:2; }
+.chapter-shell .chapter-question { max-width:90%; }
+.proof-interface {
+  box-shadow:14px 14px 0 color-mix(in srgb,var(--hermes-blue) 72%,transparent);
+  border-color:color-mix(in srgb,var(--hermes-blue) 34%,var(--chapter-line));
+  background:color-mix(in srgb,var(--chapter-bg) 92%,white);
+}
+html[data-theme="dark"] .proof-interface { background:color-mix(in srgb,var(--chapter-bg) 92%,#0b0e1f); }
+.chapter-progress i { background:var(--hermes-blue); }
+.capability-section {
+  position:relative;
+  overflow:hidden;
+}
+.capability-section > .wrap { position:relative; z-index:2; }
+.capability-art {
+  position:absolute;
+  right:-10%;
+  top:10%;
+  width:min(42vw,560px);
+  height:80%;
+  opacity:.13;
+  pointer-events:none;
+}
+.capability-art .aphrodite-art { width:100%; height:100%; }
+.capability-console {
+  position:relative;
+  z-index:3;
+  box-shadow:18px 18px 0 var(--hermes-blue);
+}
+.capability-tabs button[aria-selected="true"] { background:var(--hermes-blue); color:#fff; }
+.capability-tabs button[aria-selected="true"] span { color:#fff; }
+.verdict-section {
+  background:
+    radial-gradient(circle at 80% 20%,color-mix(in srgb,var(--hermes-blue) 16%,transparent),transparent 26%),
+    var(--canvas-alt);
+}
+.verdict-orbit { color:transparent; -webkit-text-stroke:1px color-mix(in srgb,var(--hermes-blue) 28%,transparent); }
+.contact-command {
+  background:var(--hermes-blue);
+  border-color:color-mix(in srgb,#fff 36%,transparent);
+}
+.primary { background:var(--hermes-blue); color:#fff; }
+.primary:hover { background:#1d32e6; }
+@media (max-width:1023px) {
+  .hero-art-layer { right:-10%; width:58vw; opacity:.7; }
+  .hero-bottom { width:min(78%,820px); }
+  .chapter-shell .aphrodite-art--chapter { right:-12%; width:48vw; opacity:.12; }
+}
+@media (max-width:767px) {
+  .hero-stage { min-height:auto; }
+  .hero-wrap { min-height:100svh; }
+  .hero-art-layer {
+    top:12%;
+    right:-22%;
+    width:86vw;
+    height:68%;
+    opacity:.42;
+  }
+  .hero-stage h1 { max-width:100%; margin-right:14%; }
+  .hero-bottom { width:100%; }
+  .hero-stage::after {
+    position:absolute;
+    inset:auto 0 0;
+    height:38%;
+    background:linear-gradient(to bottom,transparent,var(--canvas));
+    content:"";
+    z-index:1;
+  }
+  .chapter-shell .aphrodite-art--chapter {
+    position:absolute;
+    top:2%;
+    right:-32%;
+    width:82vw;
+    height:64%;
+    opacity:.08;
+  }
+  .chapter-shell .chapter-question { max-width:100%; }
+  .capability-art { right:-34%; width:86vw; height:70%; opacity:.08; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .aphrodite-figure,.aphrodite-orbits,.aphrodite-shell,.aphrodite-glow { animation:none; }
+  .hero-art-layer { transform:none; }
+}
