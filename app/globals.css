@@ -292,19 +292,12 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
   .hero h1 i,.hero-art img,.hero-art::before,.hero-art::after{animation:none}
   .hero-art{transform:none}[data-reveal]{opacity:1;transform:none;transition:none}
 }
-.deity-interlude{
-  position:relative;
-  overflow:hidden;
-  color:var(--ink);
-  background:var(--paper);
-}
-.deity-interlude-caption{
-  position:relative;
-  z-index:2;
+.education-art-divider{
   display:flex;
   justify-content:space-between;
   align-items:center;
   min-height:58px;
+  margin-top:0;
   padding:14px 28px;
   color:var(--ink);
   background:var(--paper);
@@ -315,12 +308,17 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
   letter-spacing:.12em;
   text-transform:uppercase;
 }
+.deity-interlude{
+  position:relative;
+  overflow:hidden;
+  background:var(--blue);
+  line-height:0;
+}
 .deity-interlude-stage{
   position:relative;
   width:100%;
   overflow:hidden;
   background:var(--blue);
-  line-height:0;
 }
 .deity-interlude-stage img{
   display:block;
@@ -334,7 +332,7 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
 }
 
 @media(max-width:767px){
-  .deity-interlude-caption{
+  .education-art-divider{
     min-height:54px;
     padding:12px 20px;
   }
