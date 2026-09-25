@@ -21,7 +21,7 @@ const jobs: ReadonlyArray<{
 ];
 
 const featureAssets = [
-  "/art/hermes-top.jpg",
+  "https://web-assets.nousresearch.com/nousnet-web/img/desktop/feature-connect.00398e980c0dd2f8.webp",
   "https://web-assets.nousresearch.com/nousnet-web/img/desktop/feature-memory.01a45f37b0af6978.webp",
   "https://web-assets.nousresearch.com/nousnet-web/img/desktop/feature-automation.d44bac592cfe9298.webp",
   "https://web-assets.nousresearch.com/nousnet-web/img/desktop/feature-tasks.1f1ac2b58490d896.webp",
@@ -29,7 +29,8 @@ const featureAssets = [
   "https://web-assets.nousresearch.com/nousnet-web/img/desktop/feature-sandbox.095069d7fe5b76a7.webp",
 ];
 
-const hermesHero = "/art/hermes-top.jpg";
+const hermesHero = "https://web-assets.nousresearch.com/nousnet-web/img/desktop/hero-art.7d419eeb314799e0.webp";
+const educationArt = "https://web-assets.nousresearch.com/nousnet-web/img/desktop/feature-browse.dc3e16e83609e822.webp";
 
 export default function Home() {
   const [language, setLanguage] = useState<Language>("id");
@@ -59,7 +60,6 @@ export default function Home() {
     const header = document.querySelector<HTMLElement>("[data-site-header]");
     const hero = document.querySelector<HTMLElement>(".hero");
     const featureNodes = Array.from(document.querySelectorAll<HTMLElement>("[data-feature-motion]"));
-    const transitionNodes = Array.from(document.querySelectorAll<HTMLElement>("[data-image-transition]"));
     const revealNodes = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
     const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -87,11 +87,6 @@ export default function Home() {
           const rect = node.getBoundingClientRect();
           const delta = ((rect.top + rect.height / 2) - innerHeight / 2) / Math.max(1, innerHeight);
           node.style.setProperty("--feature-shift", String(Math.max(-1, Math.min(1, delta))));
-        });
-        transitionNodes.forEach((node) => {
-          const rect = node.getBoundingClientRect();
-          const reveal = Math.max(0, Math.min(1, 1 - rect.top / Math.max(1, innerHeight)));
-          node.style.setProperty("--image-reveal", String(reveal));
         });
       });
     };
@@ -203,8 +198,9 @@ export default function Home() {
           {jobs.map((job, index) => (
             <article key={job.key} id={"work-" + job.key} className={"feature-row feature-row-" + ((index % 2) + 1)} data-feature-motion>
               <div className="section-shell feature-inner">
-                <div className="feature-media">
-                  <img src={featureAssets[index]} alt="" loading="lazy" />
+                <div className={"feature-media " + (index === 0 ? "feature-media-hero" : "")}>
+                  {index === 0 && <img className="feature-media-bg" src={featureAssets[index]} alt="" loading="lazy" />}
+                  <img className={index === 0 ? "feature-deity-image" : ""} src={index === 0 ? hermesHero : featureAssets[index]} alt="" loading="lazy" />
                   <span className="feature-index">{job.number}</span>
                 </div>
                 <div className="feature-copy" data-reveal>
@@ -281,11 +277,8 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="deity-interlude" data-image-transition aria-label={t("education.label")}>
-          <div className="deity-interlude-stage">
-            <img src="/art/hermes-bottom.jpg" alt="" loading="lazy" />
-            <div className="deity-interlude-caption"><span>03</span><span>{t("education.label")}</span></div>
-          </div>
+        <section className="education-art-break" aria-label={t("education.label")}>
+          <img src={educationArt} alt="" loading="lazy" />
         </section>
 
         <section className="contact-section" id="contact" aria-labelledby="contact-title">
