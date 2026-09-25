@@ -282,9 +282,9 @@ export default function Home() {
         </section>
 
         <section className="deity-interlude" data-image-transition aria-label={t("education.label")}>
+          <div className="deity-interlude-caption"><span>03</span><span>{t("education.label")}</span></div>
           <div className="deity-interlude-stage">
             <img src="/art/hermes-bottom.png" alt="" loading="lazy" decoding="async" />
-            <div className="deity-interlude-caption"><span>03</span><span>{t("education.label")}</span></div>
           </div>
         </section>
 
