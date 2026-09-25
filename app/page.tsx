@@ -21,7 +21,7 @@ const jobs: ReadonlyArray<{
 ];
 
 const featureAssets = [
-  "https://web-assets.nousresearch.com/nousnet-web/img/desktop/feature-connect.00398e980c0dd2f8.webp",
+  "/art/hermes-portfolio.jpg",
   "https://web-assets.nousresearch.com/nousnet-web/img/desktop/feature-memory.01a45f37b0af6978.webp",
   "https://web-assets.nousresearch.com/nousnet-web/img/desktop/feature-automation.d44bac592cfe9298.webp",
   "https://web-assets.nousresearch.com/nousnet-web/img/desktop/feature-tasks.1f1ac2b58490d896.webp",
@@ -29,7 +29,7 @@ const featureAssets = [
   "https://web-assets.nousresearch.com/nousnet-web/img/desktop/feature-sandbox.095069d7fe5b76a7.webp",
 ];
 
-const hermesHero = "https://web-assets.nousresearch.com/nousnet-web/img/desktop/hero-art.7d419eeb314799e0.webp";
+const hermesHero = "/art/hermes-portfolio.jpg";
 
 export default function Home() {
   const [language, setLanguage] = useState<Language>("id");
@@ -59,6 +59,7 @@ export default function Home() {
     const header = document.querySelector<HTMLElement>("[data-site-header]");
     const hero = document.querySelector<HTMLElement>(".hero");
     const featureNodes = Array.from(document.querySelectorAll<HTMLElement>("[data-feature-motion]"));
+    const transitionNodes = Array.from(document.querySelectorAll<HTMLElement>("[data-image-transition]"));
     const revealNodes = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
     const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -86,6 +87,11 @@ export default function Home() {
           const rect = node.getBoundingClientRect();
           const delta = ((rect.top + rect.height / 2) - innerHeight / 2) / Math.max(1, innerHeight);
           node.style.setProperty("--feature-shift", String(Math.max(-1, Math.min(1, delta))));
+        });
+        transitionNodes.forEach((node) => {
+          const rect = node.getBoundingClientRect();
+          const reveal = Math.max(0, Math.min(1, 1 - rect.top / Math.max(1, innerHeight)));
+          node.style.setProperty("--image-reveal", String(reveal));
         });
       });
     };
@@ -147,8 +153,6 @@ export default function Home() {
 
       <main id="main" tabIndex={-1}>
         <section id="top" className="hero" aria-labelledby="hero-title">
-          <div className="hero-grid" aria-hidden="true"></div>
-          <div className="hero-orbits" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
           <div className="hero-inner">
             <div className="hero-navline">
               <span>{t("hero.role")}</span>
@@ -170,22 +174,11 @@ export default function Home() {
               </div>
 
               <div className="hero-art">
-                <div className="hero-art-radiance" aria-hidden="true"></div>
                 <img src={hermesHero} alt="" loading="eager" />
               </div>
             </div>
 
             <div className="hero-bottom">
-              <div className="hero-terminal">
-                <div className="terminal-tabs">
-                  {t("hero.scan").split("|").map((item, index) => <span key={item} className={index === 0 ? "active" : ""}>{item}</span>)}
-                </div>
-                <div className="terminal-window">
-                  <span className="terminal-prompt" aria-hidden="true">›</span>
-                  <p>{t("hero.signal")}</p>
-                  <code>{t("hero.description")}</code>
-                </div>
-              </div>
               <a className="scroll-prompt" href="#experience"><span>{t("hero.scrollPrompt")}</span><b>↓</b></a>
             </div>
           </div>
@@ -285,6 +278,13 @@ export default function Home() {
               <p className="program">{t("education.program")}</p>
               <p>{t("education.description")}</p>
             </div>
+          </div>
+        </section>
+
+        <section className="deity-interlude" data-image-transition aria-label={t("education.label")}>
+          <div className="deity-interlude-stage">
+            <img src="/art/hermes-portfolio.jpg" alt="" loading="lazy" />
+            <div className="deity-interlude-caption"><span>03</span><span>{t("education.label")}</span></div>
           </div>
         </section>
 
