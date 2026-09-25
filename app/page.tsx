@@ -119,6 +119,14 @@ export default function Home() {
     <>
       <a className="skip" href="#main">{t("a11y.skip")}</a>
 
+      <svg className="hero-art-filter-defs" aria-hidden="true" width="0" height="0" focusable="false">
+        <defs>
+          <filter id="hero-art-key" colorInterpolationFilters="sRGB">
+            <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  4 0 0 0 -0.28" />
+          </filter>
+        </defs>
+      </svg>
+
       <header className="site-header" data-site-header>
         <a className="brand" href="#top" aria-label={t("a11y.backTop")}>BAYU ANDIKA</a>
         <button
