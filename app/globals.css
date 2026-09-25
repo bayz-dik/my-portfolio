@@ -256,6 +256,33 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
 .pref-button{min-height:32px;padding:7px 9px;color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.2);background:transparent;cursor:pointer;font-size:.54rem;font-weight:800}
 .pref-button.is-active{color:var(--blue);border-color:#fff;background:#fff}
 
+.liquid-language-toggle{
+  position:relative;
+  min-height:40px;
+  width:max-content;
+  padding:2px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:9px;
+  background:rgba(255,255,255,.08);
+  box-shadow:0 2px 8px rgba(0,0,0,.08),inset 1px 1px 1px rgba(255,255,255,.08),inset -1px -1px 1px rgba(0,0,0,.08);
+}
+.liquid-language-toggle::after{
+  content:"";
+  position:absolute;
+  z-index:0;
+  top:2px;
+  bottom:2px;
+  left:2px;
+  width:calc(50% - 2px);
+  border-radius:6px;
+  background:rgba(255,255,255,.84);
+  box-shadow:0 0 6px rgba(255,255,255,.14),0 2px 6px rgba(0,0,0,.08),inset 1px 1px 1px rgba(255,255,255,.55),inset -1px -1px 1px rgba(0,0,0,.12);
+  pointer-events:none;
+  transition:transform .3s cubic-bezier(.16,1,.3,1);
+}
+.liquid-language-toggle[data-state="en"]::after{transform:translateX(100%)}
+.liquid-language-toggle label{position:relative;z-index:10}
 .site-footer{color:#fff;background:var(--blue);border-top:1px solid rgba(255,255,255,.18)}
 .footer-inner{display:grid;grid-template-columns:1fr auto auto;gap:28px;min-height:84px;align-items:center;font-size:.65rem}
 .footer-inner strong{font-size:.95rem;font-weight:500;letter-spacing:.13em}.footer-inner span{color:rgba(255,255,255,.72)}
