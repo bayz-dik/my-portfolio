@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&display=swap");
-@font-face{font-family:"RulesCompressed";src:url("https://hermes-agent.nousresearch.com/fonts/RulesCompressed-Regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap;}
 @import "tailwindcss";
 
 :root {
@@ -296,7 +295,8 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
   .feature-question{font-size:1.38rem}
   .faq-inner{padding-block:76px 100px}.faq-item button{grid-template-columns:34px 1fr 22px;gap:12px;padding:18px 0}
   .faq-item button strong{font-size:1.55rem}.faq-answer p{padding:0 46px 20px}
-  .education-inner,.contact-grid{padding-block:80px 100px}
+  .education-inner{padding-block:80px 100px}
+  .contact-grid{padding-block:20px 100px}
   .contact-main-button{width:100%}
   .footer-inner{grid-template-columns:1fr;gap:8px;min-height:0;padding-block:24px}
 }
@@ -376,10 +376,10 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
     padding:12px 20px;
   }
   .deity-interlude-stage{
-    height:128vw;
-    min-height:760px;
+    height:105vw;
+    min-height:560px;
   }
-  .deity-figure{left:0;bottom:190px;width:100%;opacity:.9}
+  .deity-figure{left:0;bottom:0;width:100%;opacity:.9}
   .deity-wordmark{left:6%;bottom:14%;font-size:21vw;letter-spacing:-.025em}
   .deity-bayu{right:5%;bottom:8%;width:32%;opacity:.96;mix-blend-mode:normal;filter:saturate(.92) contrast(.98);clip-path:inset(7% 8% 7% 8% round 3%)}
 }
