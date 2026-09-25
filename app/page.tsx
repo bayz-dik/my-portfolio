@@ -29,7 +29,7 @@ const featureAssets = [
   "https://web-assets.nousresearch.com/nousnet-web/img/desktop/feature-sandbox.095069d7fe5b76a7.webp",
 ];
 
-const hermesHero = "/art/hermes-top.jpg";
+const hermesHero = "/art/hermes-top.png";
 
 export default function Home() {
   const [language, setLanguage] = useState<Language>("id");
@@ -283,7 +283,7 @@ export default function Home() {
 
         <section className="deity-interlude" data-image-transition aria-label={t("education.label")}>
           <div className="deity-interlude-stage">
-            <img src="/art/hermes-bottom.jpg" alt="" loading="lazy" decoding="async" />
+            <img src="/art/hermes-bottom.png" alt="" loading="lazy" decoding="async" />
             <div className="deity-interlude-caption"><span>03</span><span>{t("education.label")}</span></div>
           </div>
         </section>
