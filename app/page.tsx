@@ -296,7 +296,6 @@ export default function Home() {
         <section className="deity-interlude" data-image-transition aria-label={t("education.label")}>
           <div className="deity-interlude-stage">
             <img className="deity-figure" src="/art/hermes-bottom.png" alt="" loading="lazy" decoding="async" />
-            <img className="deity-bayu" src="/art/bayu-poster.png" alt="" loading="lazy" decoding="async" />
           </div>
         </section>
 
@@ -308,9 +307,11 @@ export default function Home() {
               <p className="contact-description">{t("contact.description")}</p>
             </div>
             <div className="contact-card" data-reveal>
-              <div className="contact-card-top"><span>{t("verdict.action")}</span><span>© 2026</span></div>
-              <a className="contact-location" href={LINKS.maps} target="_blank" rel="noopener noreferrer">{t("contact.locationLabel")}: Magelang, Indonesia</a>
-              <a className="small-button small-button-dark" href={LINKS.email}>{t("contact.emailAction")} <span>→</span></a>
+              <div className="contact-card-top"><span>{t("verdict.action")}</span><span>Jakarta, Indonesia</span></div>
+              <div className="contact-action-row">
+                <a className="small-button small-button-dark" href={LINKS.email}>{t("contact.emailAction")}</a>
+                <img className="contact-bayu-card" src="/art/bayu-poster.png" alt="" loading="lazy" decoding="async" />
+              </div>
               <PreferenceBar language={language} chooseLanguage={chooseLanguage} t={t} />
             </div>
           </div>
@@ -341,7 +342,7 @@ function PreferenceBar({ language, chooseLanguage, t }: {
   return (
     <div className="preference-bar">
       <button type="button" className={"pref-button " + (language === "id" ? "is-active" : "")} onClick={() => chooseLanguage("id")} aria-pressed={language === "id"}>ID</button>
-      <button type="button" className={"pref-button " + (language === "en" ? "is-active" : "")} onClick={() => chooseLanguage("en")} aria-pressed={language === "en"}>{t("preferences.eng")}</button>
+      <button type="button" className={"pref-button " + (language === "en" ? "is-active" : "")} onClick={() => chooseLanguage("en")} aria-pressed={language === "en"}>ENG</button>
     </div>
   );
 }
