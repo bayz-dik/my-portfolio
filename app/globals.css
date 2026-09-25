@@ -137,12 +137,35 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
   transition:transform .12s linear
 }
 
+.hero-art::before{
+  content:"";
+  position:absolute;
+  z-index:1;
+  inset:8% 3% 4%;
+  pointer-events:none;
+  background:radial-gradient(ellipse at center,rgba(23,23,255,.72) 0%,rgba(23,23,255,.34) 48%,rgba(23,23,255,0) 78%);
+  filter:blur(24px);
+  transform:scale(1.08);
+}
+.hero-art::after{
+  content:"";
+  position:absolute;
+  z-index:3;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(to bottom,var(--blue) 0%,transparent 10%,transparent 82%,var(--blue) 100%),
+    linear-gradient(to right,var(--blue) 0%,transparent 9%,transparent 91%,var(--blue) 100%);
+  opacity:.72;
+}
 .hero-art img{
   position:relative;z-index:2;width:min(54vw,690px);height:min(79vh,760px);object-fit:contain;
   filter:none;
-  mix-blend-mode:screen;
+  mix-blend-mode:normal;
   opacity:1;
   transform:scale(1.04);
+  -webkit-mask-image:radial-gradient(ellipse 76% 90% at center,rgba(0,0,0,1) 42%,rgba(0,0,0,.96) 58%,rgba(0,0,0,.62) 76%,rgba(0,0,0,0) 100%);
+  mask-image:radial-gradient(ellipse 76% 90% at center,rgba(0,0,0,1) 42%,rgba(0,0,0,.96) 58%,rgba(0,0,0,.62) 76%,rgba(0,0,0,0) 100%);
 }
 .deity-interlude-stage img{background:var(--blue)}
 
