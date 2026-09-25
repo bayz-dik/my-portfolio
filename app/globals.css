@@ -343,7 +343,7 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
   bottom:14%;
   color:rgba(255,255,255,.2);
   font-family:"Roboto Condensed","Arial Narrow","Helvetica Neue",Arial,sans-serif;
-  font-size:clamp(3.3rem,10vw,8rem);
+  font-size:clamp(4.2rem,12.5vw,10rem);
   font-weight:300;
   line-height:.82;
   letter-spacing:-.04em;
@@ -379,7 +379,7 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
     min-height:760px;
   }
   .deity-figure{left:0;bottom:190px;width:100%;opacity:.9}
-  .deity-wordmark{left:6%;bottom:14%;font-size:10vw;letter-spacing:-.04em}
+  .deity-wordmark{left:6%;bottom:14%;font-size:15vw;letter-spacing:-.055em}
   .deity-bayu{right:5%;bottom:8%;width:32%;opacity:.96;mix-blend-mode:normal;filter:saturate(.92) contrast(.98);clip-path:inset(7% 8% 7% 8% round 3%)}
 }
 
