@@ -2,8 +2,8 @@
 @import "tailwindcss";
 
 :root {
-  --blue:#1717ff;
-  --blue-deep:#1010c7;
+  --blue:#0e13e9;
+  --blue-deep:#090db8;
   --paper:#f5f5ef;
   --paper-2:#ecebe4;
   --ink:#161627;
@@ -139,6 +139,7 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
   transform:scale(1.04);
   animation:hero-figure 7s ease-in-out infinite
 }
+.deity-interlude-stage img{background:var(--blue)}
 
 .hero-bottom{
   display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px;align-items:end;
