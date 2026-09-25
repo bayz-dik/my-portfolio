@@ -21,7 +21,7 @@ const jobs: ReadonlyArray<{
 ];
 
 const featureAssets = [
-  "/art/hermes-portfolio.jpg",
+  "/art/hermes-top.jpg",
   "https://web-assets.nousresearch.com/nousnet-web/img/desktop/feature-memory.01a45f37b0af6978.webp",
   "https://web-assets.nousresearch.com/nousnet-web/img/desktop/feature-automation.d44bac592cfe9298.webp",
   "https://web-assets.nousresearch.com/nousnet-web/img/desktop/feature-tasks.1f1ac2b58490d896.webp",
@@ -29,7 +29,7 @@ const featureAssets = [
   "https://web-assets.nousresearch.com/nousnet-web/img/desktop/feature-sandbox.095069d7fe5b76a7.webp",
 ];
 
-const hermesHero = "/art/hermes-portfolio.jpg";
+const hermesHero = "/art/hermes-top.jpg";
 
 export default function Home() {
   const [language, setLanguage] = useState<Language>("id");
@@ -283,7 +283,7 @@ export default function Home() {
 
         <section className="deity-interlude" data-image-transition aria-label={t("education.label")}>
           <div className="deity-interlude-stage">
-            <img src="/art/hermes-portfolio.jpg" alt="" loading="lazy" />
+            <img src="/art/hermes-bottom.jpg" alt="" loading="lazy" />
             <div className="deity-interlude-caption"><span>03</span><span>{t("education.label")}</span></div>
           </div>
         </section>
