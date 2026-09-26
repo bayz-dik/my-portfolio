@@ -376,6 +376,9 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
 .liquid-language-toggle[data-state="en"]::after{transform:translateX(100%)}
 .liquid-language-toggle label{position:relative;z-index:10}
 
+.portfolio-music-player{position:relative;z-index:2;transform:translateY(-8px)}
+.portfolio-logo-cloud{position:relative;z-index:2;margin-top:-2px;color:#fff}
+
 .site-footer{
   position:relative;
   z-index:4;
@@ -443,7 +446,7 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
     transform:translateX(-8px);
     width:calc(100% + 8px);
   }
-  .portfolio-music-player{padding-top:12px}
+  .portfolio-music-player{padding-top:0;transform:translateY(-6px)}
   .waveform-player{gap:8px}
   .waveform-player-track{height:48px}
   .waveform-player-bars{gap:1.5px}

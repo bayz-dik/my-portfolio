@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { CONTENT, LINKS } from "./content.js";
 import { LogoMarquee } from "@/components/ui/logo-marquee";
 import WaveformPlayer from "@/components/ui/waveform-player";
+import LogoCloudTwo from "@/components/ui/logo-cloud-2";
 import { GlassFilter } from "@/components/ui/liquid-radio";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { readPreferences, writePreference } from "./preferences.js";
@@ -168,6 +169,9 @@ export default function Home() {
           </div>
           <div className="portfolio-music-player">
             <WaveformPlayer audioSrc="/music/Motivation.flac" width={520} height={54} className="portfolio-music-waveform" />
+          </div>
+          <div className="portfolio-logo-cloud">
+            <LogoCloudTwo />
           </div>
         </div>
       </aside>
