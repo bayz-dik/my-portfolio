@@ -60,6 +60,7 @@ export default function Home() {
     const root = document.documentElement;
     const header = document.querySelector<HTMLElement>("[data-site-header]");
     const hero = document.querySelector<HTMLElement>(".hero");
+    const contributionLayer = document.querySelector<HTMLElement>(".contact-section");
     const featureNodes = Array.from(document.querySelectorAll<HTMLElement>("[data-feature-motion]"));
     const transitionNodes = Array.from(document.querySelectorAll<HTMLElement>("[data-image-transition]"));
     const revealNodes = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
@@ -95,6 +96,16 @@ export default function Home() {
           const reveal = Math.max(0, Math.min(1, 1 - rect.top / Math.max(1, innerHeight)));
           node.style.setProperty("--image-reveal", String(reveal));
         });
+
+        if (contributionLayer) {
+          const rect = contributionLayer.getBoundingClientRect();
+          const travel = Math.max(1, innerHeight * 0.78);
+          const progress = reduced
+            ? 0
+            : Math.max(0, Math.min(1, (innerHeight - rect.top) / travel));
+          const maxLift = Math.min(300, innerHeight * 0.32);
+          contributionLayer.style.setProperty("--contribution-lift", String(progress * maxLift) + "px");
+        }
       });
     };
 
