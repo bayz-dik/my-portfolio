@@ -165,6 +165,10 @@ export default function Home() {
             <p className="social-menu-kicker">{t("contact.label")}</p>
             <p>{t("contact.description")}</p>
           </div>
+          <div className="hamburger-profile">
+            <img className="hamburger-profile-image" src="/art/bayu-poster.png" alt="Bayu Andika" loading="lazy" decoding="async" />
+            <blockquote className="hamburger-profile-quote">"Problem solver adaptif, cepat belajar, berpikir kritis dan kreatif, serta mampu mengubah ide menjadi solusi nyata dan berorientasi hasil."</blockquote>
+          </div>
           <nav className="social-icon-grid" aria-label={t("contact.label")}>
             <SocialIcon icon="github" label={t("contact.githubLabel")} href={LINKS.github} onClick={closeMenu} />
             <SocialIcon icon="instagram" label={t("contact.instagramLabel")} href={LINKS.instagram} onClick={closeMenu} />
@@ -334,10 +338,6 @@ export default function Home() {
               </div>
               <PreferenceBar language={language} chooseLanguage={chooseLanguage} t={t} />
             </div>
-          </div>
-          <div className="contact-bayu-row section-shell">
-            <img className="contact-bayu-card" src="/art/bayu-poster.png" alt="Bayu Andika" loading="lazy" decoding="async" />
-            <blockquote className="contact-quote">"Problem solver adaptif, cepat belajar, berpikir kritis dan kreatif, serta mampu mengubah ide menjadi solusi nyata dan berorientasi hasil."</blockquote>
           </div>
           <div className="contact-social-marquee" aria-label="Kontak media sosial">
             <LogoMarquee logos={socialLogos} />
