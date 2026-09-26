@@ -582,3 +582,5 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
     transform:none!important;
   }
 }
+
+.waveform-player-bars span{transition:height 55ms linear,opacity 120ms ease;transform-origin:center}.waveform-player-track-active .waveform-player-bars span{opacity:.92}.waveform-player-progress .waveform-player-bars{pointer-events:none}
