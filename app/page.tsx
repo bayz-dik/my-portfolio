@@ -36,7 +36,7 @@ const hermesHero = "/art/hermes-top.png";
 
 const socialLogos = [
   { src: "https://cdn.simpleicons.org/github/ffffff", alt: "GitHub", href: LINKS.github },
-  { src: "https://cdn.simpleicons.org/linkedin/ffffff", alt: "LinkedIn", href: LINKS.linkedin },
+  { src: "/icons/linkedin.svg", alt: "LinkedIn", href: LINKS.linkedin },
   { src: "https://cdn.simpleicons.org/instagram/ffffff", alt: "Instagram", href: LINKS.instagram },
   { src: "https://cdn.simpleicons.org/facebook/ffffff", alt: "Facebook", href: LINKS.facebook },
   { src: "https://cdn.simpleicons.org/gmail/ffffff", alt: "Email", href: LINKS.email },
