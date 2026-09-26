@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { CONTENT, LINKS } from "./content.js";
 import { GlassFilter } from "@/components/ui/liquid-radio";
+import { LogoMarquee } from "@/components/ui/logo-marquee";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { readPreferences, writePreference } from "./preferences.js";
 
@@ -32,6 +33,14 @@ const featureAssets = [
 ];
 
 const hermesHero = "/art/hermes-top.png";
+
+const socialLogos = [
+  { src: "https://cdn.simpleicons.org/github/ffffff", alt: "GitHub", href: LINKS.github },
+  { src: "https://cdn.simpleicons.org/linkedin/ffffff", alt: "LinkedIn", href: LINKS.linkedin },
+  { src: "https://cdn.simpleicons.org/instagram/ffffff", alt: "Instagram", href: LINKS.instagram },
+  { src: "https://cdn.simpleicons.org/facebook/ffffff", alt: "Facebook", href: LINKS.facebook },
+  { src: "https://cdn.simpleicons.org/gmail/ffffff", alt: "Email", href: LINKS.email },
+];
 
 export default function Home() {
   const [language, setLanguage] = useState<Language>("id");
@@ -323,6 +332,9 @@ export default function Home() {
               </div>
               <PreferenceBar language={language} chooseLanguage={chooseLanguage} t={t} />
             </div>
+          </div>
+          <div className="contact-social-marquee" aria-label="Kontak media sosial">
+            <LogoMarquee logos={socialLogos} />
           </div>
             <p className="sr-only" aria-live="polite">{announcement}</p>
           </section>
