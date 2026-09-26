@@ -415,7 +415,7 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
     height:60vh;
     min-height:0;
     margin:0;
-    padding:30px 22px;
+    padding:30px 18px 30px 14px;
     display:block;
     background:rgba(255,255,255,.12);
     -webkit-backdrop-filter:blur(18px) saturate(140%);
@@ -436,13 +436,14 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
   }
   .site-header{min-height:58px;padding-inline:20px}.site-header.compact{min-height:52px}.brand{font-size:.62rem}
   .hamburger-profile{
-    grid-template-columns:145px minmax(0,1fr);
-    gap:12px;
+    grid-template-columns:159px minmax(0,1fr);
+    gap:8px;
     margin-bottom:12px;
     padding-bottom:0;
+    transform:translateX(-8px);
+    width:calc(100% + 8px);
   }
   .portfolio-music-player{padding-top:12px}
-  .portfolio-music-meta{font-size:.5rem;margin-bottom:7px}
   .waveform-player{gap:8px}
   .waveform-player-track{height:48px}
   .waveform-player-bars{gap:1.5px}
