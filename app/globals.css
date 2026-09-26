@@ -298,6 +298,19 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
   line-height:1.08;
   letter-spacing:.01em;
 }
+.contact-social-marquee{
+  width:100%;
+  min-height:120px;
+  margin:0 0 12px;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  border:0;
+  background:transparent;
+}
+.contact-social-marquee>div{width:100%}
+.contact-social-marquee img{display:block;width:auto;filter:none!important}
+.contact-social-marquee a{display:flex;align-items:center;justify-content:center}
 .contact-cv-button{margin-top:0}
 .small-button{display:inline-flex;min-height:42px;align-items:center;gap:10px;margin-top:0;padding:10px 14px;font-size:.61rem;font-weight:800;letter-spacing:.08em;text-decoration:none;text-transform:uppercase}
 .small-button-dark{color:#fff;background:#10102b}
@@ -360,19 +373,25 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
   .contact-grid{padding-block:20px 24px}
   .contact-main-button{width:100%}
   .contact-bayu-row{
-    grid-template-columns:minmax(124px,145px) minmax(0,1fr);
-    gap:18px;
+    grid-template-columns:minmax(100px,108px) minmax(0,1fr);
+    gap:16px;
     margin-top:18px;
     padding-top:18px;
   }
   .contact-bayu-card{
-    width:145px!important;
-    height:199px!important;
-    max-width:145px!important;
-    max-height:199px!important;
+    width:108px!important;
+    height:148px!important;
+    max-width:108px!important;
+    max-height:148px!important;
   }
   .contact-quote{
-    font-size:clamp(1.5rem,6.3vw,2rem);
+    font-size:clamp(1.18rem,5vw,1.5rem);
+    line-height:1.18;
+    letter-spacing:0;
+  }
+  .contact-social-marquee{
+    min-height:108px;
+    margin:0;
   }
   .footer-inner{grid-template-columns:1fr;gap:8px;min-height:0;padding-block:24px}
 }
