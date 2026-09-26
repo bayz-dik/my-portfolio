@@ -291,7 +291,14 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
 }
 .liquid-language-toggle[data-state="en"]::after{transform:translateX(100%)}
 .liquid-language-toggle label{position:relative;z-index:10}
-.site-footer{color:#fff;background:var(--blue);border-top:1px solid rgba(255,255,255,.18)}
+.site-footer{
+  position:relative;
+  z-index:4;
+  margin-top:calc(var(--contribution-lift, 0px) * -1);
+  color:#fff;
+  background:var(--blue);
+  border-top:1px solid rgba(255,255,255,.18)
+}
 .footer-inner{display:grid;grid-template-columns:1fr auto auto;gap:28px;min-height:84px;align-items:center;font-size:.65rem}
 .footer-inner strong{font-size:.95rem;font-weight:500;letter-spacing:.13em}.footer-inner span{color:rgba(255,255,255,.72)}
 
