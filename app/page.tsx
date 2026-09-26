@@ -97,19 +97,16 @@ export default function Home() {
           node.style.setProperty("--image-reveal", String(reveal));
         });
 
-        if (contributionLayer && transitionNodes.length) {
-          const source = transitionNodes.find((node) => node.classList.contains("deity-interlude"));
-          const sourceRect = source?.getBoundingClientRect();
-          if (sourceRect) {
-            const travel = Math.max(1, innerHeight * 0.78);
-            const progress = reduced
-              ? 0
-              : Math.max(0, Math.min(1, (innerHeight - sourceRect.bottom) / travel));
-            const headerBottom = header?.getBoundingClientRect().bottom ?? 0;
-            const availableLift = Math.max(0, sourceRect.bottom - headerBottom);
-            const maxLift = Math.min(360, innerHeight * 0.38, availableLift);
-            contributionLayer.style.setProperty("--contribution-lift", String(progress * maxLift) + "px");
-          }
+        if (contributionLayer) {
+          const pageTop = contributionLayer.getBoundingClientRect().top + scrollY;
+          const headerRect = header?.getBoundingClientRect();
+          const headerPageBottom = (headerRect?.bottom ?? 0) + scrollY;
+          const startScroll = Math.max(0, pageTop - innerHeight * 0.72);
+          const maxLift = Math.max(0, pageTop - headerPageBottom);
+          const lift = reduced
+            ? 0
+            : Math.max(0, Math.min(maxLift, (scrollY - startScroll) * 0.65));
+          contributionLayer.style.setProperty("--contribution-lift", String(lift) + "px");
         }
       });
     };
