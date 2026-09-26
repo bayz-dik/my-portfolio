@@ -405,7 +405,7 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
     display:flex;
     align-items:flex-start;
     justify-content:flex-end;
-    padding-top:110px;
+    padding-top:0;
   }
   .social-menu-inner{
     width:74vw;
