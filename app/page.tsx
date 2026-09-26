@@ -167,10 +167,6 @@ export default function Home() {
             <blockquote className="hamburger-profile-quote">"Problem solver adaptif, cepat belajar, berpikir kritis dan kreatif, serta mampu mengubah ide menjadi solusi nyata dan berorientasi hasil."</blockquote>
           </div>
           <div className="portfolio-music-player">
-            <div className="portfolio-music-meta">
-              <span>NOW PLAYING</span>
-              <strong>Motivation</strong>
-            </div>
             <WaveformPlayer audioSrc="/music/Motivation.flac" width={520} height={54} className="portfolio-music-waveform" />
           </div>
         </div>
