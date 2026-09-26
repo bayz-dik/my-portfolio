@@ -350,10 +350,6 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
   .education-inner,.contact-grid{grid-template-columns:1fr}
 }
 
-.contact-card-top{font-size:.55rem}
-  .contact-action-row{grid-template-columns:minmax(0,1fr);gap:12px;min-height:130px}
-  .contact-bayu-card{top:24px;right:17px;width:159px!important;height:218px!important;max-width:159px!important;max-height:218px!important}
-  .contact-actions{gap:8px}
 @media(max-width:767px){
   .section-shell,.hero-inner,.social-menu-inner{width:calc(100% - 40px)}
   .deity-interlude{
