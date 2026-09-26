@@ -105,7 +105,9 @@ export default function Home() {
             const progress = reduced
               ? 0
               : Math.max(0, Math.min(1, (innerHeight - sourceRect.bottom) / travel));
-            const maxLift = Math.min(360, innerHeight * 0.38);
+            const headerBottom = header?.getBoundingClientRect().bottom ?? 0;
+            const availableLift = Math.max(0, sourceRect.bottom - headerBottom);
+            const maxLift = Math.min(360, innerHeight * 0.38, availableLift);
             contributionLayer.style.setProperty("--contribution-lift", String(progress * maxLift) + "px");
           }
         }
