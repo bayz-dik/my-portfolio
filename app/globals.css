@@ -412,17 +412,17 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
   .site-header{min-height:58px;padding-inline:20px}.site-header.compact{min-height:52px}.brand{font-size:.62rem}
   .hamburger-profile{
     grid-template-columns:159px minmax(0,1fr);
-    gap:18px;
-    margin-bottom:20px;
-    padding-bottom:18px;
+    gap:14px;
+    margin-bottom:12px;
+    padding-bottom:12px;
   }
   .hamburger-profile-image{
     width:159px;
     height:218px;
   }
   .hamburger-profile-quote{
-    font-size:clamp(.95rem,4vw,1.25rem);
-    line-height:1.18;
+    font-size:clamp(1.2rem,5vw,1.55rem);
+    line-height:1.16;
   }
   .social-menu-inner{grid-template-columns:1fr;gap:32px;padding-top:84px}.social-icon-grid{grid-template-columns:repeat(3,1fr)}
   .social-icon-button{min-height:96px}.social-icon-button svg{width:34px;height:34px}
