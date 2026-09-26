@@ -79,8 +79,8 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
   align-items:center;
   gap:28px;
   margin-bottom:24px;
-  padding-bottom:22px;
-  border-bottom:1px solid rgba(255,255,255,.2);
+  padding-bottom:0;
+  border-bottom:0;
 }
 .hamburger-profile-image{
   width:159px;
