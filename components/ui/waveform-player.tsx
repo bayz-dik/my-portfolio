@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 interface WaveformPlayerProps {
@@ -63,9 +64,9 @@ export default function WaveformPlayer({ audioSrc, width = 400, height = 60, cla
           </div>
         </div>
       </div>
-      <button type="button" className="waveform-player-button" onClick={togglePlay} aria-label={isPlaying ? "Pause musik" : "Putar musik"}>
+      <Button type="button" className="waveform-player-button" onClick={togglePlay} aria-label={isPlaying ? "Pause musik" : "Putar musik"}>
         {isPlaying ? "Pause" : "Play"}
-      </button>
+      </Button>
     </div>
   )
 }
