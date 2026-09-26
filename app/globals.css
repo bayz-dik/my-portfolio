@@ -377,8 +377,8 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
 .liquid-language-toggle label{position:relative;z-index:10}
 
 .portfolio-music-player{position:relative;z-index:2;transform:translateY(8px)}
-.portfolio-logo-cloud{position:relative;z-index:2;margin-top:10px;color:#fff}.portfolio-logo-by{margin:8px 0 2px;text-align:center;color:rgba(255,255,255,.72);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase}
-.logo-cloud-two{display:flex;align-items:center;justify-content:center;gap:26px;width:100%;padding:4px 0}
+.portfolio-logo-cloud{position:relative;z-index:2;margin-top:2px;color:#fff}.portfolio-logo-by{margin:0 0 1px;text-align:center;color:rgba(255,255,255,.72);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase}
+.logo-cloud-two{display:flex;align-items:center;justify-content:center;gap:26px;width:100%;padding:0}
 .logo-cloud-two-link{display:flex;width:34px;height:34px;align-items:center;justify-content:center;color:#fff;opacity:.82;transition:opacity .2s ease,transform .2s ease}
 .logo-cloud-two-link:hover{opacity:1;transform:translateY(-2px)}
 .logo-cloud-two-icon{width:26px;height:26px;display:block;object-fit:contain;flex:none}.logo-cloud-two-icon-hermes{width:34px;height:18px}
