@@ -240,14 +240,14 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
 .education-inner h2{max-width:8ch}.education-copy h3{margin-bottom:8px;font-size:1.35rem;font-weight:500}
 .education-copy>p{color:var(--muted)}.education-copy .program{margin:20px 0;color:var(--blue);font-weight:700}
 
+.contribution-overlap{position:relative}
 .contact-section{
-  position:relative;
+  position:sticky;
+  top:64px;
   z-index:5;
   overflow:hidden;
   color:#fff;
   background:var(--blue);
-  transform:translate3d(0,calc(var(--contribution-lift, 0px) * -1),0);
-  will-change:transform;
 }
 .contact-section::before{content:none}
 .contact-grid{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(320px,.9fr);gap:clamp(42px,8vw,120px);align-items:end;padding-block:clamp(96px,14vw,190px)}
@@ -373,8 +373,6 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
   position:relative;
   z-index:1;
   overflow:hidden;
-  margin-top:-54px;
-  padding-top:54px;
   background:var(--blue);
   line-height:0;
 }
@@ -424,10 +422,6 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
   .education-art-divider{
     min-height:54px;
     padding:12px 20px;
-  }
-  .deity-interlude{
-    margin-top:-54px;
-    padding-top:54px;
   }
   .deity-interlude-stage{
     height:105vw;
