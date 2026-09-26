@@ -97,17 +97,7 @@ export default function Home() {
           node.style.setProperty("--image-reveal", String(reveal));
         });
 
-        if (contributionLayer) {
-          const pageTop = contributionLayer.getBoundingClientRect().top + scrollY;
-          const headerRect = header?.getBoundingClientRect();
-          const headerPageBottom = (headerRect?.bottom ?? 0) + scrollY;
-          const startScroll = Math.max(0, pageTop - innerHeight * 0.72);
-          const maxLift = Math.max(0, pageTop - headerPageBottom);
-          const lift = reduced
-            ? 0
-            : Math.max(0, Math.min(maxLift, (scrollY - startScroll) * 0.65));
-          contributionLayer.style.setProperty("--contribution-lift", String(lift) + "px");
-        }
+
       });
     };
 
@@ -308,13 +298,14 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="deity-interlude" data-image-transition aria-label={t("education.label")}>
-          <div className="deity-interlude-stage">
-            <img className="deity-figure" src="/art/hermes-bottom.png" alt="" loading="lazy" decoding="async" />
-          </div>
-        </section>
+        <div className="contribution-overlap">
+          <section className="deity-interlude" data-image-transition aria-label={t("education.label")}>
+            <div className="deity-interlude-stage">
+              <img className="deity-figure" src="/art/hermes-bottom.png" alt="" loading="lazy" decoding="async" />
+            </div>
+          </section>
 
-        <section className="contact-section" id="contact" aria-labelledby="contact-title">
+          <section className="contact-section" id="contact" aria-labelledby="contact-title">
           <div className="contact-grid section-shell">
             <div data-reveal>
               <p className="eyebrow">{t("contact.label")}</p>
@@ -333,8 +324,9 @@ export default function Home() {
               <PreferenceBar language={language} chooseLanguage={chooseLanguage} t={t} />
             </div>
           </div>
-          <p className="sr-only" aria-live="polite">{announcement}</p>
-        </section>
+            <p className="sr-only" aria-live="polite">{announcement}</p>
+          </section>
+        </div>
       </main>
 
       <footer className="site-footer">
