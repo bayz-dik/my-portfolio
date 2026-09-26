@@ -408,7 +408,7 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
     padding-top:0;
   }
   .social-menu-inner{
-    width:74vw;
+    width:92vw;
     height:60vh;
     min-height:0;
     margin:0;
@@ -438,10 +438,11 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
     height:218px;
   }
   .hamburger-profile-quote{
-    font-size:clamp(1.2rem,5vw,1.55rem);
-    line-height:1.16;
+    font-size:clamp(1.08rem,4.2vw,1.32rem);
+    line-height:1.2;
+    white-space:normal;
   }
-  .social-menu-inner{grid-template-columns:1fr;gap:32px;padding-top:84px}.social-icon-grid{grid-template-columns:repeat(3,1fr)}
+  .social-menu-inner{grid-template-columns:1fr;gap:32px;padding-top:0}.social-icon-grid{grid-template-columns:repeat(3,1fr)}
   .social-icon-button{min-height:96px}.social-icon-button svg{width:34px;height:34px}
   .hero{min-height:auto}.hero-inner{min-height:100svh;padding-top:80px;padding-bottom:28px}
   .hero-navline{flex-direction:column;align-items:flex-start;gap:5px}
