@@ -271,6 +271,29 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
 .contact-action-row{display:grid;grid-template-columns:minmax(0,1fr);align-items:start;gap:14px;min-height:130px;margin-top:20px}
 .contact-bayu-card{position:absolute!important;top:24px;right:17px;display:block!important;width:159px!important;height:218px!important;max-width:159px!important;max-height:218px!important;object-fit:contain;clip-path:inset(7% 8% 7% 8% round 10%)}
 .contact-actions{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.contact-social-marquee{
+  width:min(calc(100% - 56px),1240px);
+  min-height:148px;
+  margin:0 auto 56px;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.3);
+  background:rgba(7,7,94,.08);
+}
+.contact-social-marquee>div{
+  width:100%;
+}
+.contact-social-marquee img{
+  display:block;
+  width:auto;
+  filter:none!important;
+}
+.contact-social-marquee a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
 .contact-cv-button{margin-top:0}
 .small-button{display:inline-flex;min-height:42px;align-items:center;gap:10px;margin-top:0;padding:10px 14px;font-size:.61rem;font-weight:800;letter-spacing:.08em;text-decoration:none;text-transform:uppercase}
 .small-button-dark{color:#fff;background:#10102b}.preference-bar{display:flex;gap:7px;margin-top:22px;padding-top:17px;border-top:1px solid rgba(255,255,255,.2)}
@@ -366,6 +389,11 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
   .education-inner{padding-block:80px 100px}
   .contact-grid{padding-block:20px 100px}
   .contact-main-button{width:100%}
+  .contact-social-marquee{
+    width:calc(100% - 40px);
+    min-height:148px;
+    margin-bottom:32px;
+  }
   .footer-inner{grid-template-columns:1fr;gap:8px;min-height:0;padding-block:24px}
 }
 
