@@ -47,6 +47,11 @@ export default function LogoCloudTwo() {
             className={className}
             loading="lazy"
             decoding="async"
+            style={
+              name === "Hermes Agent"
+                ? { width: 34, height: 16, objectFit: "contain" }
+                : undefined
+            }
           />
           <span className="sr-only">{name}</span>
         </a>
