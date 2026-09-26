@@ -165,6 +165,16 @@ export default function Home() {
             <img className="hamburger-profile-image" src="/art/bayu-poster.png" alt="Bayu Andika" loading="lazy" decoding="async" />
             <blockquote className="hamburger-profile-quote">"Problem solver adaptif, cepat belajar, berpikir kritis dan kreatif, serta mampu mengubah ide menjadi solusi nyata dan berorientasi hasil."</blockquote>
           </div>
+          <div className="portfolio-music-player">
+            <div className="portfolio-music-meta">
+              <span>NOW PLAYING</span>
+              <strong>Motivation</strong>
+            </div>
+            <audio controls preload="metadata" aria-label="Putar Motivation">
+              <source src="/music/Motivation.flac" type="audio/flac" />
+              Browser kamu tidak mendukung pemutar audio.
+            </audio>
+          </div>
         </div>
       </aside>
 
