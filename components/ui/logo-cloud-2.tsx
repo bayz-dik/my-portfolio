@@ -4,29 +4,33 @@ const logos = [
   {
     name: "Hermes Agent",
     href: "https://hermes-agent.nousresearch.com/",
-    src: "https://hermes-agent.nousresearch.com/docs/img/logo.png",
+    src: "/icons/hermes-agent.svg",
+    className: "logo-cloud-two-icon logo-cloud-two-icon-hermes",
   },
   {
     name: "ChatGPT",
     href: "https://chatgpt.com/",
-    src: "https://cdn.simpleicons.org/openai/ffffff",
+    src: "/icons/openai.svg",
+    className: "logo-cloud-two-icon",
   },
   {
     name: "Claude",
     href: "https://claude.ai/",
-    src: "https://cdn.simpleicons.org/anthropic/ffffff",
+    src: "/icons/claude.svg",
+    className: "logo-cloud-two-icon",
   },
   {
     name: "21st.dev",
     href: "https://21st.dev/",
-    src: "https://assets.loftlyy.com/brands/21st/21st-logo-white.svg",
+    src: "/icons/21st.svg",
+    className: "logo-cloud-two-icon",
   },
 ];
 
 export default function LogoCloudTwo() {
   return (
     <nav className="logo-cloud-two" aria-label="AI and design tools">
-      {logos.map(({ name, href, src }) => (
+      {logos.map(({ name, href, src, className }) => (
         <a
           key={name}
           href={href}
@@ -40,7 +44,7 @@ export default function LogoCloudTwo() {
             src={src}
             alt=""
             aria-hidden="true"
-            className="logo-cloud-two-icon"
+            className={className}
             loading="lazy"
             decoding="async"
           />
