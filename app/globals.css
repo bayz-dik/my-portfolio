@@ -70,7 +70,7 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
 
 .social-menu{
   position:fixed;z-index:250;inset:0;visibility:hidden;opacity:0;pointer-events:none;
-  color:#fff;background:var(--blue);transition:opacity .3s ease,visibility .3s ease
+  color:#fff;background:transparent;transition:opacity .3s ease,visibility .3s ease
 }
 .social-menu.is-open{visibility:visible;opacity:1;pointer-events:auto}
 .hamburger-profile{
@@ -400,7 +400,24 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
 }
 
 @media(max-width:767px){
-  .section-shell,.hero-inner,.social-menu-inner{width:calc(100% - 40px)}
+  .section-shell,.hero-inner{width:calc(100% - 40px)}
+  .social-menu{
+    display:flex;
+    align-items:flex-start;
+    justify-content:flex-end;
+    padding-top:110px;
+  }
+  .social-menu-inner{
+    width:74vw;
+    height:60vh;
+    min-height:0;
+    margin:0;
+    padding:30px 22px;
+    display:block;
+    background:var(--blue);
+    overflow:hidden;
+    box-shadow:-8px 8px 30px rgba(0,0,0,.18);
+  }
   .deity-interlude{
     position:sticky;
     top:var(--header-stack,58px);
