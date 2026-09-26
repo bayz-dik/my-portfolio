@@ -328,9 +328,11 @@ export default function Home() {
                   <a className="small-button small-button-dark" href={LINKS.email}>{t("contact.emailAction")}</a>
                   <a className="small-button small-button-dark contact-cv-button" href="/Bayu-Andika-CV.pdf" download>{t("common.downloadCv")}</a>
                 </div>
-                <img className="contact-bayu-card" src="/art/bayu-poster.png" alt="" loading="lazy" decoding="async" />
               </div>
-              <PreferenceBar language={language} chooseLanguage={chooseLanguage} t={t} />
+              <div className="contact-bayu-row">
+                <img className="contact-bayu-card" src="/art/bayu-poster.png" alt="Bayu Andika" loading="lazy" decoding="async" />
+                <blockquote className="contact-quote">"Problem solver adaptif, cepat belajar, berpikir kritis dan kreatif, serta mampu mengubah ide menjadi solusi nyata dan berorientasi hasil."</blockquote>
+              </div>
             </div>
           </div>
           <div className="contact-social-marquee" aria-label="Kontak media sosial">
