@@ -38,20 +38,21 @@ const logos = [
 
 export default function LogoCloudTwo() {
   return (
-    <div className="logo-cloud-two" aria-label="AI and design tools">
+    <nav className="logo-cloud-two" aria-label="AI and design tools">
       {logos.map(({ name, href, Icon }) => (
         <a
           key={name}
           href={href}
-          aria-label={name}
+          aria-label={`Open ${name}`}
           title={name}
           target="_blank"
           rel="noopener noreferrer"
           className="logo-cloud-two-link"
         >
           <Icon className="logo-cloud-two-icon" />
+          <span className="sr-only">{name}</span>
         </a>
       ))}
-    </div>
+    </nav>
   );
 }
