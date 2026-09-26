@@ -73,6 +73,29 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
   color:#fff;background:var(--blue);transition:opacity .3s ease,visibility .3s ease
 }
 .social-menu.is-open{visibility:visible;opacity:1;pointer-events:auto}
+.hamburger-profile{
+  display:grid;
+  grid-template-columns:108px minmax(0,1fr);
+  align-items:center;
+  gap:24px;
+  margin-bottom:32px;
+  padding-bottom:28px;
+  border-bottom:1px solid rgba(255,255,255,.2);
+}
+.hamburger-profile-image{
+  width:108px;
+  height:148px;
+  object-fit:contain;
+  display:block;
+}
+.hamburger-profile-quote{
+  margin:0;
+  color:#fff;
+  font-family:"Caveat","Segoe Print","Bradley Hand",cursive;
+  font-size:clamp(1.35rem,3.5vw,2rem);
+  font-weight:500;
+  line-height:1.12;
+}
 .social-menu-inner{
   width:min(calc(100% - 56px),1240px);min-height:100%;margin-inline:auto;
   display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);
@@ -386,6 +409,20 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
     margin-top:0;
   }
   .site-header{min-height:58px;padding-inline:20px}.site-header.compact{min-height:52px}.brand{font-size:.62rem}
+  .hamburger-profile{
+    grid-template-columns:88px minmax(0,1fr);
+    gap:16px;
+    margin-bottom:24px;
+    padding-bottom:22px;
+  }
+  .hamburger-profile-image{
+    width:88px;
+    height:120px;
+  }
+  .hamburger-profile-quote{
+    font-size:clamp(1.15rem,4.8vw,1.45rem);
+    line-height:1.15;
+  }
   .social-menu-inner{grid-template-columns:1fr;gap:32px;padding-top:84px}.social-icon-grid{grid-template-columns:repeat(3,1fr)}
   .social-icon-button{min-height:96px}.social-icon-button svg{width:34px;height:34px}
   .hero{min-height:auto}.hero-inner{min-height:100svh;padding-top:80px;padding-bottom:28px}
