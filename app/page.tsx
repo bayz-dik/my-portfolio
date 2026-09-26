@@ -171,7 +171,7 @@ export default function Home() {
               <span>NOW PLAYING</span>
               <strong>Motivation</strong>
             </div>
-            <WaveformPlayer audioSrc="/music/Motivation.flac" width={520} height={54} />
+            <WaveformPlayer audioSrc="/music/Motivation.flac" width={520} height={54} className="portfolio-music-waveform" />
           </div>
         </div>
       </aside>
