@@ -171,6 +171,7 @@ export default function Home() {
             <WaveformPlayer audioSrc="/music/Motivation.flac" width={520} height={54} className="portfolio-music-waveform" />
           </div>
           <div className="portfolio-logo-cloud">
+            <div className="portfolio-logo-by">by:</div>
             <LogoCloudTwo />
           </div>
         </div>
