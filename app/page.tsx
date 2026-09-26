@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { CONTENT, LINKS } from "./content.js";
 import { LogoMarquee } from "@/components/ui/logo-marquee";
+import WaveformPlayer from "@/components/ui/waveform-player";
 import { GlassFilter } from "@/components/ui/liquid-radio";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { readPreferences, writePreference } from "./preferences.js";
@@ -170,10 +171,7 @@ export default function Home() {
               <span>NOW PLAYING</span>
               <strong>Motivation</strong>
             </div>
-            <audio controls preload="metadata" aria-label="Putar Motivation">
-              <source src="/music/Motivation.flac" type="audio/flac" />
-              Browser kamu tidak mendukung pemutar audio.
-            </audio>
+            <WaveformPlayer audioSrc="/music/Motivation.flac" width={520} height={54} />
           </div>
         </div>
       </aside>
