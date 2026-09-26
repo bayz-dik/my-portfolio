@@ -161,22 +161,10 @@ export default function Home() {
 
       <aside id="social-menu" className={"social-menu " + (menuOpen ? "is-open" : "")} aria-hidden={!menuOpen}>
         <div className="social-menu-inner">
-          <div className="social-menu-heading">
-            <p className="social-menu-kicker">{t("contact.label")}</p>
-            <p>{t("contact.description")}</p>
-          </div>
           <div className="hamburger-profile">
             <img className="hamburger-profile-image" src="/art/bayu-poster.png" alt="Bayu Andika" loading="lazy" decoding="async" />
             <blockquote className="hamburger-profile-quote">"Problem solver adaptif, cepat belajar, berpikir kritis dan kreatif, serta mampu mengubah ide menjadi solusi nyata dan berorientasi hasil."</blockquote>
           </div>
-          <nav className="social-icon-grid" aria-label={t("contact.label")}>
-            <SocialIcon icon="github" label={t("contact.githubLabel")} href={LINKS.github} onClick={closeMenu} />
-            <SocialIcon icon="instagram" label={t("contact.instagramLabel")} href={LINKS.instagram} onClick={closeMenu} />
-            <SocialIcon icon="linkedin" label={t("contact.linkedinLabel")} href={LINKS.linkedin} onClick={closeMenu} />
-            <SocialIcon icon="facebook" label={t("contact.facebookLabel")} href={LINKS.facebook} onClick={closeMenu} />
-            <SocialIcon icon="email" label={t("contact.emailLabel")} href={LINKS.email} onClick={closeMenu} />
-            <SocialIcon icon="phone" label={t("contact.phoneLabel")} href={LINKS.phone} onClick={closeMenu} />
-          </nav>
         </div>
       </aside>
 
