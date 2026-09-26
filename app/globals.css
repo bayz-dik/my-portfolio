@@ -272,14 +272,14 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
 .contact-bayu-card{position:absolute!important;top:24px;right:17px;display:block!important;width:159px!important;height:218px!important;max-width:159px!important;max-height:218px!important;object-fit:contain;clip-path:inset(7% 8% 7% 8% round 10%)}
 .contact-actions{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
 .contact-social-marquee{
-  width:min(calc(100% - 56px),1240px);
-  min-height:148px;
-  margin:0 auto 56px;
+  width:100%;
+  min-height:120px;
+  margin:0 0 12px;
   display:flex;
   align-items:center;
   overflow:hidden;
-  border:1px solid rgba(255,255,255,.3);
-  background:rgba(7,7,94,.08);
+  border:0;
+  background:transparent;
 }
 .contact-social-marquee>div{
   width:100%;
@@ -387,12 +387,12 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
   .faq-inner{padding-block:76px 100px}.faq-item button{grid-template-columns:34px 1fr 22px;gap:12px;padding:18px 0}
   .faq-item button strong{font-size:1.55rem}.faq-answer p{padding:0 46px 20px}
   .education-inner{padding-block:80px 100px}
-  .contact-grid{padding-block:20px 100px}
+  .contact-grid{padding-block:20px 24px}
   .contact-main-button{width:100%}
   .contact-social-marquee{
-    width:calc(100% - 40px);
-    min-height:148px;
-    margin-bottom:32px;
+    width:100%;
+    min-height:108px;
+    margin:0;
   }
   .footer-inner{grid-template-columns:1fr;gap:8px;min-height:0;padding-block:24px}
 }
