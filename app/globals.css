@@ -1,7 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=Roboto+Condensed:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
+@import "tw-animate-css";
 
 :root {
+  --wave-color: #fff;
+  --progress-color: #fff;
   --blue:#0e13e9;
   --blue-deep:#090db8;
   --paper:#f5f5ef;
