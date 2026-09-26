@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { CONTENT, LINKS } from "./content.js";
+import { LogoMarquee } from "@/components/ui/logo-marquee";
 import { GlassFilter } from "@/components/ui/liquid-radio";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { readPreferences, writePreference } from "./preferences.js";
@@ -32,6 +33,16 @@ const featureAssets = [
 ];
 
 const hermesHero = "/art/hermes-top.png";
+
+const socialLogos = [
+  { src: "https://cdn.simpleicons.org/github/ffffff", alt: "GitHub", href: LINKS.github },
+  { src: "/icons/linkedin.svg", alt: "LinkedIn", href: LINKS.linkedin },
+  { src: "https://cdn.simpleicons.org/instagram/ffffff", alt: "Instagram", href: LINKS.instagram },
+  { src: "https://cdn.simpleicons.org/facebook/ffffff", alt: "Facebook", href: LINKS.facebook },
+  { src: "https://cdn.simpleicons.org/gmail/ffffff", alt: "Email", href: LINKS.email },
+];
+
+
 
 
 export default function Home() {
@@ -327,6 +338,9 @@ export default function Home() {
           <div className="contact-bayu-row section-shell">
             <img className="contact-bayu-card" src="/art/bayu-poster.png" alt="Bayu Andika" loading="lazy" decoding="async" />
             <blockquote className="contact-quote">"Problem solver adaptif, cepat belajar, berpikir kritis dan kreatif, serta mampu mengubah ide menjadi solusi nyata dan berorientasi hasil."</blockquote>
+          </div>
+          <div className="contact-social-marquee" aria-label="Kontak media sosial">
+            <LogoMarquee logos={socialLogos} />
           </div>
             <p className="sr-only" aria-live="polite">{announcement}</p>
           </section>
