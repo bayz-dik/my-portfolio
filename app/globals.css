@@ -246,8 +246,8 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
   overflow:hidden;
   color:#fff;
   background:var(--blue);
-  margin-top:calc(var(--contribution-lift, 0px) * -1);
-  will-change:margin-top;
+  transform:translate3d(0,calc(var(--contribution-lift, 0px) * -1),0);
+  will-change:transform;
 }
 .contact-section::before{content:none}
 .contact-grid{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(320px,.9fr);gap:clamp(42px,8vw,120px);align-items:end;padding-block:clamp(96px,14vw,190px)}
@@ -444,6 +444,6 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
     transform:none!important;
   }
   .contact-section{
-    margin-top:0;
+    transform:none;
   }
 }
