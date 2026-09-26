@@ -246,7 +246,6 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
   top:var(--header-stack,64px);
   z-index:5;
   overflow:hidden;
-  margin-top:-240px;
   color:#fff;
   background:var(--blue);
 }
@@ -324,7 +323,7 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
   .contact-actions{gap:8px}
 @media(max-width:767px){
   .section-shell,.hero-inner,.social-menu-inner{width:calc(100% - 40px)}
-  .contact-section{margin-top:-200px}
+  .contact-section{margin-top:0}
   .site-header{min-height:58px;padding-inline:20px}.site-header.compact{min-height:52px}.brand{font-size:.62rem}
   .social-menu-inner{grid-template-columns:1fr;gap:32px;padding-top:84px}.social-icon-grid{grid-template-columns:repeat(3,1fr)}
   .social-icon-button{min-height:96px}.social-icon-button svg{width:34px;height:34px}
@@ -375,6 +374,7 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
   position:relative;
   z-index:1;
   overflow:hidden;
+  margin-bottom:-240px;
   background:var(--blue);
   line-height:0;
 }
@@ -424,6 +424,9 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
   .education-art-divider{
     min-height:54px;
     padding:12px 20px;
+  }
+  .deity-interlude{
+    margin-bottom:-200px;
   }
   .deity-interlude-stage{
     height:105vw;
