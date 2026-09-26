@@ -242,12 +242,20 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
 
 .contribution-overlap{
   position:relative;
-  padding-bottom:240px;
-  margin-bottom:-240px;
+  z-index:0;
+  background:var(--blue);
+}
+.deity-interlude{
+  position:sticky;
+  top:64px;
+  z-index:1;
+  overflow:visible;
+  background:var(--blue);
+  line-height:0;
 }
 .contact-section{
   position:sticky;
-  top:var(--header-stack,64px);
+  top:64px;
   z-index:5;
   overflow:hidden;
   margin-top:-240px;
@@ -328,11 +336,13 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
   .contact-actions{gap:8px}
 @media(max-width:767px){
   .section-shell,.hero-inner,.social-menu-inner{width:calc(100% - 40px)}
-  .contribution-overlap{
-    padding-bottom:200px;
-    margin-bottom:-200px;
+  .deity-interlude{
+    top:58px;
   }
-  .contact-section{margin-top:-200px}
+  .contact-section{
+    top:58px;
+    margin-top:-200px;
+  }
   .site-header{min-height:58px;padding-inline:20px}.site-header.compact{min-height:52px}.brand{font-size:.62rem}
   .social-menu-inner{grid-template-columns:1fr;gap:32px;padding-top:84px}.social-icon-grid{grid-template-columns:repeat(3,1fr)}
   .social-icon-button{min-height:96px}.social-icon-button svg{width:34px;height:34px}
@@ -379,13 +389,7 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
   letter-spacing:.12em;
   text-transform:uppercase;
 }
-.deity-interlude{
-  position:relative;
-  z-index:1;
-  overflow:visible;
-  background:var(--blue);
-  line-height:0;
-}
+
 .deity-interlude-stage{
   position:relative;
   width:100%;
