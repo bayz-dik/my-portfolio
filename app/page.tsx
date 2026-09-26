@@ -97,14 +97,17 @@ export default function Home() {
           node.style.setProperty("--image-reveal", String(reveal));
         });
 
-        if (contributionLayer) {
-          const rect = contributionLayer.getBoundingClientRect();
-          const travel = Math.max(1, innerHeight * 0.78);
-          const progress = reduced
-            ? 0
-            : Math.max(0, Math.min(1, (innerHeight - rect.top) / travel));
-          const maxLift = Math.min(300, innerHeight * 0.32);
-          contributionLayer.style.setProperty("--contribution-lift", String(progress * maxLift) + "px");
+        if (contributionLayer && transitionNodes.length) {
+          const source = transitionNodes.find((node) => node.classList.contains("deity-interlude"));
+          const sourceRect = source?.getBoundingClientRect();
+          if (sourceRect) {
+            const travel = Math.max(1, innerHeight * 0.78);
+            const progress = reduced
+              ? 0
+              : Math.max(0, Math.min(1, (innerHeight - sourceRect.bottom) / travel));
+            const maxLift = Math.min(360, innerHeight * 0.38);
+            contributionLayer.style.setProperty("--contribution-lift", String(progress * maxLift) + "px");
+          }
         }
       });
     };
