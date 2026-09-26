@@ -60,7 +60,6 @@ export default function Home() {
     const root = document.documentElement;
     const header = document.querySelector<HTMLElement>("[data-site-header]");
     const hero = document.querySelector<HTMLElement>(".hero");
-    const contributionLayer = document.querySelector<HTMLElement>(".contact-section");
     const featureNodes = Array.from(document.querySelectorAll<HTMLElement>("[data-feature-motion]"));
     const transitionNodes = Array.from(document.querySelectorAll<HTMLElement>("[data-image-transition]"));
     const revealNodes = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
@@ -84,6 +83,7 @@ export default function Home() {
         root.style.setProperty("--scroll-progress", String(Math.min(1, Math.max(0, scrollY / maxScroll))));
         root.style.setProperty("--hero-shift", String(Math.min(1, Math.max(0, scrollY / Math.max(1, innerHeight)))));
         header?.classList.toggle("compact", scrollY > 18);
+        if (header) root.style.setProperty("--header-stack", String(header.offsetHeight) + "px");
         if (hero) header?.classList.toggle("header-on-blue", hero.getBoundingClientRect().bottom > 72);
 
         featureNodes.forEach((node) => {
