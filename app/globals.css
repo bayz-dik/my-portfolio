@@ -414,9 +414,14 @@ h2{font-size:clamp(3.1rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em}
     margin:0;
     padding:30px 22px;
     display:block;
-    background:var(--blue);
+    background:rgba(255,255,255,.12);
+    -webkit-backdrop-filter:blur(18px) saturate(140%);
+    backdrop-filter:blur(18px) saturate(140%);
+    border:1px solid rgba(255,255,255,.28);
+    border-right:0;
+    border-radius:22px 0 0 22px;
     overflow:hidden;
-    box-shadow:-8px 8px 30px rgba(0,0,0,.18);
+    box-shadow:0 12px 40px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.14);
   }
   .deity-interlude{
     position:sticky;
