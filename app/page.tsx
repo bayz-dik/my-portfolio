@@ -2,8 +2,9 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { CONTENT, LINKS } from "./content.js";
-import { LogoMarquee } from "@/components/ui/logo-marquee";
-import { readPreferences } from "./preferences.js";
+import { GlassFilter } from "@/components/ui/liquid-radio";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { readPreferences, writePreference } from "./preferences.js";
 
 type Language = "id" | "en";
 type WorkKey = "indomaret" | "bmc" | "mitra" | "restu";
@@ -32,13 +33,6 @@ const featureAssets = [
 
 const hermesHero = "/art/hermes-top.png";
 
-const socialLogos = [
-  { src: "https://cdn.simpleicons.org/github/ffffff", alt: "GitHub", href: LINKS.github },
-  { src: "/icons/linkedin.svg", alt: "LinkedIn", href: LINKS.linkedin },
-  { src: "https://cdn.simpleicons.org/instagram/ffffff", alt: "Instagram", href: LINKS.instagram },
-  { src: "https://cdn.simpleicons.org/facebook/ffffff", alt: "Facebook", href: LINKS.facebook },
-  { src: "https://cdn.simpleicons.org/gmail/ffffff", alt: "Email", href: LINKS.email },
-];
 
 export default function Home() {
   const [language, setLanguage] = useState<Language>("id");
@@ -118,6 +112,12 @@ export default function Home() {
       observer?.disconnect();
     };
   }, [language, t]);
+
+  const chooseLanguage = (next: Language) => {
+    setLanguage(next);
+    writePreference(localStorage, "language", next);
+    setAnnouncement((CONTENT[next] as Record<string, string>)["announce." + next]);
+  };
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -321,14 +321,12 @@ export default function Home() {
                   <a className="small-button small-button-dark contact-cv-button" href="/Bayu-Andika-CV.pdf" download>{t("common.downloadCv")}</a>
                 </div>
               </div>
-              <div className="contact-bayu-row">
-                <img className="contact-bayu-card" src="/art/bayu-poster.png" alt="Bayu Andika" loading="lazy" decoding="async" />
-                <blockquote className="contact-quote">"Problem solver adaptif, cepat belajar, berpikir kritis dan kreatif, serta mampu mengubah ide menjadi solusi nyata dan berorientasi hasil."</blockquote>
-              </div>
+              <PreferenceBar language={language} chooseLanguage={chooseLanguage} t={t} />
             </div>
           </div>
-          <div className="contact-social-marquee" aria-label="Kontak media sosial">
-            <LogoMarquee logos={socialLogos} />
+          <div className="contact-bayu-row section-shell">
+            <img className="contact-bayu-card" src="/art/bayu-poster.png" alt="Bayu Andika" loading="lazy" decoding="async" />
+            <blockquote className="contact-quote">"Problem solver adaptif, cepat belajar, berpikir kritis dan kreatif, serta mampu mengubah ide menjadi solusi nyata dan berorientasi hasil."</blockquote>
           </div>
             <p className="sr-only" aria-live="polite">{announcement}</p>
           </section>
@@ -348,6 +346,41 @@ export default function Home() {
 
 function faqJobs(): WorkKey[] {
   return ["indomaret", "bmc", "mitra", "restu"];
+}
+
+function PreferenceBar({ language, chooseLanguage }: {
+  language: Language;
+  chooseLanguage: (next: Language) => void;
+}) {
+  const value = language;
+
+  return (
+    <div className="preference-bar">
+      <RadioGroup
+        value={value}
+        onValueChange={(next) => {
+          if (next === "id" || next === "en") chooseLanguage(next);
+        }}
+        className="liquid-language-toggle group relative inline-grid grid-cols-[1fr_1fr] items-center gap-0"
+        data-state={value}
+      >
+        <div
+          className="absolute inset-0 isolate -z-10 overflow-hidden rounded-lg"
+          style={{ filter: 'url("#radio-glass")' }}
+          aria-hidden="true"
+        />
+        <label className="relative z-10 inline-flex h-9 min-w-12 cursor-pointer select-none items-center justify-center whitespace-nowrap px-3 text-xs font-bold tracking-[0.08em] text-white/65 transition-colors group-data-[state=id]:text-white group-data-[state=en]:text-white/65">
+          ID
+          <RadioGroupItem id="language-id" value="id" className="sr-only" />
+        </label>
+        <label className="relative z-10 inline-flex h-9 min-w-12 cursor-pointer select-none items-center justify-center whitespace-nowrap px-3 text-xs font-bold tracking-[0.08em] text-white/65 transition-colors group-data-[state=en]:text-white group-data-[state=id]:text-white/65">
+          ENG
+          <RadioGroupItem id="language-en" value="en" className="sr-only" />
+        </label>
+        <GlassFilter />
+      </RadioGroup>
+    </div>
+  );
 }
 
 function SocialIcon({ icon, label, href, onClick }: {
